@@ -82,14 +82,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-gray-200 overflow-hidden"
+            className="md:hidden bg-white border-b border-gray-200 overflow-hidden left-0 right-0 w-full"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
+            <div className="px-4 pt-2 pb-6 space-y-1 max-w-full overflow-hidden">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`block px-3 py-4 text-base font-bold rounded-lg ${pathname === link.href
+                  className={`block px-3 py-4 text-base font-bold rounded-lg w-full ${pathname === link.href
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-gray-600 hover:bg-gray-50'
                     }`}

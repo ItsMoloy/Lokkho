@@ -23,6 +23,46 @@
     color: var(--foreground);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+    
+    * {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    
+    /* Fix for any potential overflow from large content */
+    .min-h-screen, section, main {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+    
+    /* Ensure images don't overflow */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Prevent text overflow on very small screens */
+    h1, h2, h3, h4, h5, h6 {
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    /* Fix for long text content */
+    p, span, div {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
   }
 }
 
