@@ -1,80 +1,67 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface StatCardProps {
-  end: number;
-  suffix?: string;
-  prefix?: string;
-  label: string;
-  duration?: number;
+    end: number;
+    duration?: number;
+    label: string;
+    suffix?: string;
 }
 
-const StatCard = ({ end, suffix = '', prefix = '', label, duration = 2000 }: StatCardProps) => {
-  const [count, setCount] = useState(0);
+export default function StatCard({ end, duration = 2000, label, suffix = '' }: StatCardProps) {
+    const [count, setCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let startTime: number | null = null;
-    let animationFrame: number;
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
 
-    const animate = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime;
-      const progress = currentTime - startTime;
-      
-      if (progress < duration) {
-        const currentCount = Math.floor((progress / duration) * end);
-        setCount(currentCount);
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
 
-    // Start animation when component comes into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animationFrame = requestAnimationFrame(animate);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
+        return () => {
+            if (cardRef.current) {
+                observer.unobserve(cardRef.current);
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let startTimestamp: number | null = null;
+        const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            setCount(Math.floor(progress * end));
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }, [isVisible, end, duration]);
+
+    return (
+        <div
+            ref={cardRef}
+            className="p-8 rounded-2xl bg-white text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-gray-50 flex flex-col items-center justify-center min-h-[160px]"
+            style={{ boxShadow: '0 10px 30px -5px rgba(139, 92, 246, 0.1)' }}
+        >
+            <div className="text-4xl sm:text-5xl font-black mb-3 text-gradient" style={{ fontFamily: 'Playfair Display, serif' }}>
+                {count}{suffix}
+            </div>
+            <div className="text-gray-500 font-medium tracking-wide text-sm sm:text-base">
+                {label}
+            </div>
+        </div>
     );
-
-    const element = document.getElementById(`stat-${label.replace(/\s+/g, '-').toLowerCase()}`);
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [end, duration, label]);
-
-  return (
-    <div 
-      id={`stat-${label.replace(/\s+/g, '-').toLowerCase()}`}
-      className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-      style={{ boxShadow: 'var(--box-shadow)' }}
-    >
-      <div 
-        className="text-4xl md:text-5xl font-bold mb-2"
-        style={{ color: 'var(--primary-violet)' }}
-      >
-        {prefix}{count}{suffix}
-      </div>
-      <div className="text-gray-600 font-medium">
-        {label}
-      </div>
-    </div>
-  );
-};
-
-export default StatCard;
+}

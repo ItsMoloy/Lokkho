@@ -9,18 +9,18 @@ interface StepCardProps {
 
 const StepCard = ({ stepNumber, title, description, icon }: StepCardProps) => {
   return (
-    <div className="glass-card modern-card rounded-xl p-6 relative">
+    <div className="glass-card modern-card rounded-xl p-4 sm:p-6 relative">
       {/* Step Number */}
       <div 
-        className="absolute -top-4 -left-4 w-12 h-12 gradient-purple-magenta rounded-full flex items-center justify-center text-white font-bold text-lg animate-float"
+        className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 gradient-purple-magenta rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg animate-float"
       >
         {stepNumber}
       </div>
 
       {/* Icon */}
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center mb-3 sm:mb-4">
         <div 
-          className="w-16 h-16 rounded-full flex items-center justify-center"
+          className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center"
           style={{ backgroundColor: 'var(--light-purple)' }}
         >
           <div style={{ color: 'var(--primary-purple)' }}>
@@ -31,7 +31,7 @@ const StepCard = ({ stepNumber, title, description, icon }: StepCardProps) => {
 
       {/* Content */}
       <h3 
-        className="text-xl font-semibold mb-3 text-center"
+        className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-center"
         style={{ 
           fontFamily: 'Playfair Display, serif',
           color: 'var(--dark-charcoal)'
@@ -47,7 +47,7 @@ const StepCard = ({ stepNumber, title, description, icon }: StepCardProps) => {
               className="mt-1 flex-shrink-0"
               style={{ color: 'var(--accent-orange)' }}
             />
-            <span className="text-gray-600 text-sm">{point}</span>
+            <span className="text-gray-600 text-xs sm:text-sm">{point}</span>
           </li>
         ))}
       </ul>

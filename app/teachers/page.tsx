@@ -1,400 +1,246 @@
-import Link from 'next/link';
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import FadeIn from '@/components/FadeIn';
 import FloatingJoinButton from '@/components/FloatingJoinButton';
-import { 
-  FaChalkboardTeacher, 
-  FaGraduationCap, 
-  FaFlask,
-  FaCalculator,
-  FaGlobe,
-  FaAtom,
-  FaMicroscope,
-  FaBook,
-  FaUser,
-  FaAward,
-  FaStar
-} from 'react-icons/fa';
+import { FaUserGraduate, FaChalkboardTeacher, FaHistory, FaAward } from 'react-icons/fa';
+import Image from 'next/image';
+
+// Teacher data array for easy updates later
+const teachersData = [
+  {
+    name: 'S.M. Mehedi Hasan',
+    subject: 'Physics & ICT',
+    classes: 'Class 9-12',
+    experience: '8+ Years',
+    education: 'B.Sc. in EEE',
+    role: 'Lead Academic Mentor & System Design',
+    subjects: ['Physics', 'ICT', 'Computer Science']
+  },
+  {
+    name: 'Md. Jafar Imam Sajal',
+    subject: 'AI & Soft Skills',
+    classes: 'Class 6-12 & IT Training',
+    experience: '6+ Years',
+    education: 'Learning Consultant, Netcom Learning',
+    role: 'IT Training Specialist',
+    subjects: ['Artificial Intelligence', 'Web Development', 'Soft Skills']
+  },
+  {
+    name: 'Academic Specialist 01',
+    subject: 'Mathematics',
+    classes: 'Class 6-10',
+    experience: '5+ Years',
+    education: 'M.Sc. in Mathematics',
+    role: 'Senior Teacher',
+    subjects: ['Advanced Math', 'Algebra', 'Geometry']
+  },
+  {
+    name: 'Academic Specialist 02',
+    subject: 'Chemistry',
+    classes: 'Class 9-12',
+    experience: '4+ Years',
+    education: 'B.Sc. in Chemistry',
+    role: 'Senior Teacher',
+    subjects: ['Organic Chemistry', 'Physical Chemistry']
+  },
+  {
+    name: 'Academic Specialist 03',
+    subject: 'Biology',
+    classes: 'Class 9-12',
+    experience: '5+ Years',
+    education: 'B.Sc. in Botany',
+    role: 'Senior Teacher',
+    subjects: ['Botany', 'Zoology', 'Human Biology']
+  },
+  {
+    name: 'Academic Specialist 04',
+    subject: 'English',
+    classes: 'Class 6-12',
+    experience: '7+ Years',
+    education: 'MA in English Literature',
+    role: 'Senior Teacher',
+    subjects: ['English Grammar', 'Literature', 'Composition']
+  },
+  {
+    name: 'Academic Specialist 05',
+    subject: 'Bangla',
+    classes: 'Class 6-10',
+    experience: '6+ Years',
+    education: 'MA in Bangla Literature',
+    role: 'Senior Teacher',
+    subjects: ['Bangla Grammar', 'Sahitya']
+  },
+  {
+    name: 'Academic Specialist 06',
+    subject: 'General Science',
+    classes: 'Class 6-8',
+    experience: '4+ Years',
+    education: 'B.Sc. General Science',
+    role: 'Junior Teacher',
+    subjects: ['Science', 'Environmental Studies']
+  },
+  {
+    name: 'Academic Specialist 07',
+    subject: 'Social Studies',
+    classes: 'Class 6-10',
+    experience: '5+ Years',
+    education: 'MA in History',
+    role: 'Senior Teacher',
+    subjects: ['History', 'Geography', 'Civics']
+  },
+  {
+    name: 'Academic Specialist 08',
+    subject: 'ICT Basics',
+    classes: 'Class 6-8',
+    experience: '3+ Years',
+    education: 'B.Sc. in CSE',
+    role: 'Junior Teacher',
+    subjects: ['Computer Fundamentals', 'Digital Literacy']
+  },
+  {
+    name: 'Academic Specialist 09',
+    subject: 'Higher Mathematics',
+    classes: 'Class 11-12',
+    experience: '7+ Years',
+    education: 'M.Sc. Applied Mathematics',
+    role: 'Senior Teacher',
+    subjects: ['Calculus', 'Statistics', 'Applied Math']
+  }
+];
 
 export default function Teachers() {
-  // Add teacher data in teachersData array
-  const teachersData = [
-    {
-      id: 1,
-      name: "Dr. Mohammad Rahman",
-      subject: "Physics",
-      experience: "15+ Years",
-      specialization: "Advanced Physics & Quantum Mechanics",
-      avatar: <FaUser />
-    },
-    {
-      id: 2,
-      name: "Prof. Fatema Khatun",
-      subject: "Chemistry",
-      experience: "12+ Years",
-      specialization: "Organic Chemistry & Lab Techniques",
-      avatar: <FaUser />
-    },
-    {
-      id: 3,
-      name: "Eng. Ahmed Hassan",
-      subject: "Mathematics",
-      experience: "10+ Years",
-      specialization: "Calculus & Applied Mathematics",
-      avatar: <FaUser />
-    },
-    {
-      id: 4,
-      name: "Ms. Sarah Islam",
-      subject: "Biology",
-      experience: "8+ Years",
-      specialization: "Molecular Biology & Genetics",
-      avatar: <FaUser />
-    },
-    {
-      id: 5,
-      name: "Mr. Karim Uddin",
-      subject: "English Language",
-      experience: "14+ Years",
-      specialization: "Literature & Communication Skills",
-      avatar: <FaUser />
-    },
-    {
-      id: 6,
-      name: "Dr. Nazma Parveen",
-      subject: "Bangla",
-      experience: "11+ Years",
-      specialization: "Bangla Literature & Creative Writing",
-      avatar: <FaUser />
-    },
-    {
-      id: 7,
-      name: "Prof. Tariq Mahmood",
-      subject: "Computer Science",
-      experience: "9+ Years",
-      specialization: "Programming & Web Development",
-      avatar: <FaUser />
-    },
-    {
-      id: 8,
-      name: "Ms. Ayesha Siddiqua",
-      subject: "General Science",
-      experience: "7+ Years",
-      specialization: "Integrated Science & STEM Education",
-      avatar: <FaUser />
-    }
-  ];
-
-  // Subject icons mapping
-  const subjectIcons: { [key: string]: React.ReactNode } = {
-    "Physics": <FaAtom />,
-    "Chemistry": <FaFlask />,
-    "Mathematics": <FaCalculator />,
-    "Biology": <FaMicroscope />,
-    "English Language": <FaGlobe />,
-    "Bangla": <FaBook />,
-    "Computer Science": <FaGraduationCap />,
-    "General Science": <FaFlask />
-  };
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-primary-dark">
       <Navbar />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-violet-600 to-violet-800">
-          <div 
-            className="absolute inset-0"
-            style={{ 
-              background: 'linear-gradient(135deg, var(--primary-violet) 0%, #8B5CF6 100%)'
-            }}
-          />
-          <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div 
-              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-            >
-              <FaChalkboardTeacher size={40} />
-            </div>
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Our Teaching Team
-            </h1>
-            <p className="text-xl md:text-2xl font-light opacity-95 max-w-3xl mx-auto">
-              Meet our dedicated educators who are committed to nurturing academic excellence
-            </p>
-          </div>
-        </section>
 
-        {/* Team Overview */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ 
-                  fontFamily: 'Playfair Display, serif',
-                  color: 'var(--dark-charcoal)'
-                }}
-              >
-                Excellence in Education
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our team of 11 experienced teachers brings together expertise across multiple disciplines, 
-                ensuring comprehensive education for our students. Each educator is dedicated to fostering 
-                critical thinking and academic growth.
+      <main className="flex-grow pt-0">
+
+        {/* --- Teachers Hero Section --- */}
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+          {/* Background Gradient */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-accent-purple via-accent-cyan to-accent-pink" />
+
+          {/* Decorative mesh */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
+            <FadeIn>
+              <span className="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-8 inline-block border border-white/30">Expert Faculty</span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Our Expert<br />Teaching Team
+              </h1>
+              <p className="text-xl md:text-2xl font-medium mb-10 text-white/90 max-w-3xl mx-auto">
+                Meet the minds behind our students' success. Our team consists of 11 dedicated professionals who bring years of industry and academic experience to the classroom.
               </p>
-            </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-              <div className="text-center p-6 rounded-xl" style={{ backgroundColor: 'var(--light-violet)', boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: 'var(--primary-violet)' }}
-                >
-                  11
-                </div>
-                <div className="text-gray-600 font-medium">Expert Teachers</div>
+              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#teachers" className="btn-primary flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-accent-purple to-accent-cyan text-white hover:scale-105 border-none shadow-accent-purple">
+                  Meet Our Teachers <FaUserGraduate />
+                </a>
+                <a href="/contact" className="btn-secondary flex items-center gap-2 px-10 py-5 border-text-primary text-text-primary hover:bg-surface-light hover:text-accent-purple bg-transparent">
+                  <FaChalkboardTeacher size={14} /> Join Our Team
+                </a>
               </div>
-              <div className="text-center p-6 rounded-xl" style={{ backgroundColor: 'var(--light-violet)', boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: 'var(--primary-violet)' }}
-                >
-                  8+
-                </div>
-                <div className="text-gray-600 font-medium">Years Average Experience</div>
-              </div>
-              <div className="text-center p-6 rounded-xl" style={{ backgroundColor: 'var(--light-violet)', boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: 'var(--primary-violet)' }}
-                >
-                  100%
-                </div>
-                <div className="text-gray-600 font-medium">Dedicated Faculty</div>
-              </div>
-              <div className="text-center p-6 rounded-xl" style={{ backgroundColor: 'var(--light-violet)', boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: 'var(--primary-violet)' }}
-                >
-                  6
-                </div>
-                <div className="text-gray-600 font-medium">Days/Week Teaching</div>
-              </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
-        {/* Teachers Grid */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
+        {/* --- Teacher Grid --- */}
+        <section id="teachers" className="section-padding bg-secondary-dark">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Meet Our Teachers"
-              subtitle="Qualified educators passionate about student success"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {teachersData.map((teacher) => (
-                <div 
-                  key={teacher.id}
-                  className="bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
-                  style={{ boxShadow: 'var(--box-shadow)' }}
-                >
-                  {/* Avatar Section */}
-                  <div 
-                    className="p-8 text-center"
-                    style={{ backgroundColor: 'var(--light-violet)' }}
-                  >
-                    <div 
-                      className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
-                      style={{ backgroundColor: 'var(--primary-violet)' }}
-                    >
-                      <div className="text-white text-2xl">
-                        {teacher.avatar}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teachersData.map((t, i) => (
+                <FadeIn key={i} delay={i * 0.05}>
+                  <div className="bg-surface-dark rounded-3xl overflow-hidden shadow-xl border border-border-dark group hover:-translate-y-2 transition-all duration-300">
+                    <div className="h-64 bg-surface-light flex items-center justify-center relative overflow-hidden">
+                      <FaChalkboardTeacher size={80} className="text-accent-purple/30 group-hover:scale-110 transition-transform duration-500" />
+                      <div className="absolute top-4 right-4 bg-gradient-to-r from-accent-purple to-accent-cyan text-white p-2 rounded-xl text-xs font-black shadow-lg">
+                        {t.experience}
                       </div>
+                      {/* Teacher Profile Image if available */}
+                      <Image
+                        src="/assets/teachers/class.jpg"
+                        alt={t.name}
+                        fill
+                        className="object-cover opacity-0 group-hover:opacity-100 transition-opacity"
+                        unoptimized
+                      />
                     </div>
-                    <h3 
-                      className="text-xl font-bold mb-2"
-                      style={{ 
-                        fontFamily: 'Playfair Display, serif',
-                        color: 'var(--dark-charcoal)'
-                      }}
-                    >
-                      {teacher.name}
-                    </h3>
-                  </div>
+                    <div className="p-6">
+                      {/* Class Badge */}
+                      <div className="mb-4">
+                        <span className="inline-block bg-gradient-to-r from-accent-purple/20 to-accent-cyan/20 text-accent-purple px-3 py-1 rounded-full text-xs font-bold border border-accent-purple/30">
+                          {t.classes}
+                        </span>
+                      </div>
+                      
+                      {/* Teacher Name */}
+                      <h3 className="text-xl font-bold text-text-primary mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '700' }}>
+                        {t.name}
+                      </h3>
+                      
+                      {/* Role */}
+                      <p className="text-xs font-semibold text-accent-cyan mb-3 uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {t.role}
+                      </p>
+                      
+                      {/* Subjects */}
+                      <div className="mb-4">
+                        <p className="text-xs font-medium text-text-muted mb-2">Subjects:</p>
+                        <div className="flex flex-wrap gap-1">
+                          {t.subjects.map((subject, idx) => (
+                            <span key={idx} className="bg-surface-light/50 text-text-secondary px-2 py-1 rounded text-xs font-medium">
+                              {subject}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
 
-                  {/* Details Section */}
-                  <div className="p-6">
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <div style={{ color: 'var(--primary-violet)' }}>
-                        {subjectIcons[teacher.subject] || <FaBook />}
-                      </div>
-                      <span 
-                        className="font-semibold"
-                        style={{ color: 'var(--primary-violet)' }}
-                      >
-                        {teacher.subject}
-                      </span>
-                    </div>
-                    
-                    <div className="text-center mb-3">
-                      <div className="text-sm text-gray-600 mb-1">Experience</div>
-                      <div 
-                        className="font-medium"
-                        style={{ color: 'var(--gold-amber)' }}
-                      >
-                        {teacher.experience}
-                      </div>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="text-sm text-gray-600 mb-2">Specialization</div>
-                      <div className="text-xs text-gray-700 leading-relaxed">
-                        {teacher.specialization}
-                      </div>
-                    </div>
-
-                    <div className="flex justify-center mt-4">
-                      <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <FaStar key={star} className="text-sm" style={{ color: 'var(--gold-amber)' }} />
-                        ))}
+                      {/* Education & Experience */}
+                      <div className="pt-4 border-t border-border-dark flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan flex items-center justify-center text-white shrink-0">
+                          <FaHistory size={12} />
+                        </div>
+                        <div className="text-xs leading-tight">
+                          <p className="font-semibold text-text-primary" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            {t.education}
+                          </p>
+                          <p className="text-text-muted">{t.experience} Experience</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Teaching Philosophy */}
-        <section className="py-20 bg-white">
+        {/* --- Stats / CTA Note --- */}
+        <section className="section-padding bg-primary-dark">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Our Teaching Philosophy"
-              subtitle="The principles that guide our educational approach"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div 
-                className="p-6 rounded-xl text-center"
-                style={{ 
-                  backgroundColor: 'var(--light-violet)',
-                  boxShadow: 'var(--box-shadow)'
-                }}
-              >
-                <div 
-                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaUser className="text-white text-2xl" />
-                </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Student-Centered
-                </h4>
-                <p className="text-gray-600">
-                  We prioritize individual student needs and learning styles for personalized education.
-                </p>
+            <div className="bg-gradient-to-r from-accent-purple/20 to-accent-cyan/20 p-10 rounded-[30px] border border-accent-purple/30 flex flex-col md:flex-row items-center justify-between gap-10">
+              <div>
+                <h2 className="text-3xl text-text-primary font-black mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '800' }}>Join the Teaching Elite</h2>
+                <p className="text-text-secondary">We are always looking for passionate educators to join our core team.</p>
               </div>
-
-              <div 
-                className="p-6 rounded-xl text-center"
-                style={{ 
-                  backgroundColor: 'var(--light-violet)',
-                  boxShadow: 'var(--box-shadow)'
-                }}
-              >
-                <div 
-                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaAward className="text-white text-2xl" />
+              <div className="flex gap-4">
+                <div className="text-center bg-surface-light/20 p-4 rounded-2xl border border-accent-purple/30 min-w-[120px]">
+                  <p className="text-accent-purple text-3xl font-black" style={{ fontFamily: 'Inter, sans-serif' }}>11</p>
+                  <p className="text-[10px] text-text-muted uppercase font-black" style={{ fontFamily: 'Inter, sans-serif' }}>Current Faculty</p>
                 </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Excellence Driven
-                </h4>
-                <p className="text-gray-600">
-                  We maintain high standards and continuously strive for academic and professional excellence.
-                </p>
-              </div>
-
-              <div 
-                className="p-6 rounded-xl text-center"
-                style={{ 
-                  backgroundColor: 'var(--light-violet)',
-                  boxShadow: 'var(--box-shadow)'
-                }}
-              >
-                <div 
-                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaGraduationCap className="text-white text-2xl" />
+                <div className="text-center bg-surface-light/20 p-4 rounded-2xl border border-accent-cyan/30 min-w-[120px]">
+                  <p className="text-accent-cyan text-3xl font-black" style={{ fontFamily: 'Inter, sans-serif' }}>100%</p>
+                  <p className="text-[10px] text-text-muted uppercase font-black" style={{ fontFamily: 'Inter, sans-serif' }}>Dedication</p>
                 </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Innovation Focused
-                </h4>
-                <p className="text-gray-600">
-                  We embrace modern teaching methods and technologies to enhance learning experiences.
-                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Join Our Team */}
-        <section className="py-20">
-          <div 
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-            style={{ 
-              backgroundColor: 'var(--primary-violet)',
-              borderRadius: 'var(--border-radius-card)'
-            }}
-          >
-            <h2 
-              className="text-3xl md:text-4xl font-bold mb-6 text-white"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Join Our Teaching Team
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              We are always looking for passionate educators who share our commitment to excellence. 
-              If you have the expertise and dedication to shape young minds, we'd love to hear from you.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-            >
-              <FaChalkboardTeacher />
-              Apply to Join Us
-            </Link>
-          </div>
-        </section>
       </main>
 
       <Footer />

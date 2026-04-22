@@ -2,114 +2,113 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = () => {
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Academic', href: '/academic' },
+  { name: 'IT Training', href: '/it-training' },
+  { name: 'Events', href: '/events' },
+  { name: 'Teachers', href: '/teachers' },
+  { name: 'Contact', href: '/contact' },
+];
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/academic', label: 'Academic' },
-    { href: '/it-training', label: 'IT Training' },
-    { href: '/events', label: 'Events' },
-    { href: '/teachers', label: 'Teachers' },
-    { href: '/contact', label: 'Contact' },
-  ];
+  // Close mobile menu on route change
+  useEffect(() => setIsOpen(false), [pathname]);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-effect shadow-lg' : 'glass-effect'
-    }`}>
+    <nav
+      className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg border-b border-gray-200 transition-all duration-300 py-4"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2 group">
             <img 
-              src="/profile.jpg" 
+              src="profile.jpg" 
               alt="Lokkho Academic and IT Institute" 
-              className="h-10 w-auto rounded-lg object-cover hover:scale-105 transition-transform duration-200"
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
-                style={{ fontFamily: 'DM Sans, sans-serif' }}
+                className={`text-sm font-semibold transition-colors duration-200 hover:text-blue-600 ${pathname === link.href
+                    ? 'text-blue-600'
+                    : 'text-gray-600'
+                  }`}
               >
-                {link.label}
+                {link.name}
               </Link>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
             <Link
               href="/contact"
-              className="btn-glass text-purple-700 rounded-lg font-medium"
-              style={{ color: 'var(--primary-purple)' }}
+              className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all"
             >
-              <FaPhoneAlt className="text-sm" />
-              <span className="font-medium">Contact Us</span>
+              Join Now
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-purple-600 transition-colors"
-              style={{ color: isOpen ? 'var(--primary-purple)' : 'inherit' }}
-            >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
-          </div>
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden p-2 rounded-lg"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? (
+              <FaTimes className="text-gray-600" size={24} />
+            ) : (
+              <FaBars className="text-gray-600" size={24} />
+            )}
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-b border-gray-200 overflow-hidden"
+          >
+            <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
                 <Link
-                  key={link.href}
+                  key={link.name}
                   href={link.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-md transition-colors duration-200 font-medium"
-                  style={{ fontFamily: 'DM Sans, sans-serif' }}
-                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-4 text-base font-bold rounded-lg ${pathname === link.href
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50'
+                    }`}
                 >
-                  {link.label}
+                  {link.name}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="btn-glass text-purple-700 rounded-md font-medium"
-                style={{ color: 'var(--primary-purple)' }}
-                onClick={() => setIsOpen(false)}
-              >
-                <FaPhoneAlt className="text-sm" />
-                <span className="font-medium">Contact Us</span>
-              </Link>
+              <div className="pt-4">
+                <Link
+                  href="/contact"
+                  className="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-bold hover:bg-blue-700"
+                >
+                  Enroll Now
+                </Link>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </nav>
   );
-};
-
-export default Navbar;
+}

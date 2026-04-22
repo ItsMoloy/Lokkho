@@ -1,168 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
-:root {
-  /* Academic/HSC Theme - Purple & Magenta Gradients */
-  --primary-purple: #8B5CF6;
-  --primary-dark-purple: #7C3AED;
-  --magenta-accent: #EC4899;
-  --light-purple: #F3E8FF;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  
-  /* SSC Success Path Theme - Blue */
-  --primary-blue: #3B82F6;
-  --primary-dark-blue: #2563EB;
-  --light-blue: #EFF6FF;
-  
-  /* Common Colors */
-  --white: #FFFFFF;
-  --dark-gray: #1F2937;
-  --medium-gray: #6B7280;
-  --light-gray: #F3F4F6;
-  --accent-orange: #F97316;
-  --background: var(--white);
-  --foreground: var(--dark-gray);
-  
-  /* Glassmorphism & Modern Design */
-  --glass-backdrop: blur(10px);
-  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  --border-radius-glass: 16px;
-  --border-radius-card: 12px;
-  --border-radius-button: 8px;
-  --border-radius-large: 24px;
-  
-  /* Enhanced Shadows */
-  --box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
-  --box-shadow-glass: 0 8px 32px rgba(139, 92, 246, 0.15);
-  --box-shadow-hover: 0 12px 40px rgba(139, 92, 246, 0.20);
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary-purple);
-  --color-primary-dark: var(--primary-dark-purple);
-  --color-magenta: var(--magenta-accent);
-  --color-light-purple: var(--light-purple);
-  --color-primary-blue: var(--primary-blue);
-  --color-primary-dark-blue: var(--primary-dark-blue);
-  --color-light-blue: var(--light-blue);
-  --color-dark-gray: var(--dark-gray);
-  --color-medium-gray: var(--medium-gray);
-  --color-light-gray: var(--light-gray);
-  --color-accent-orange: var(--accent-orange);
-  --font-sans: 'DM Sans', sans-serif;
-  --font-serif: 'Playfair Display', serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'DM Sans', sans-serif;
-  line-height: 1.6;
-}
+@layer base {
+  :root {
+    --primary-blue: #1E40AF;
+    --primary-dark: #1E3A8A;
+    --secondary-blue: #3B82F6;
+    --accent-orange: #F97316;
+    --accent-orange-light: #FB923C;
+    --secondary-bg: #EFF6FF;
+    --white: #FFFFFF;
+    --dark-charcoal: #1F2937;
+    --gray-light: #F9FAFB;
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Glassmorphism Utility Classes */
-.glass-effect {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: var(--box-shadow-glass);
-}
-
-.gradient-purple-magenta {
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--magenta-accent) 100%);
-}
-
-.gradient-purple-dark {
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-dark-purple) 100%);
-}
-
-.gradient-blue {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark-blue) 100%);
-}
-
-/* Enhanced Animations */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+    --foreground: var(--dark-charcoal);
+    --background: var(--white);
   }
-  to {
-    opacity: 1;
+
+  body {
+    background: var(--white);
+    color: var(--dark-charcoal);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+
+  /* --- Shared Components Styling --- */
+  .btn-primary {
+    @apply bg-primary text-white font-semibold py-3 px-6 rounded-btn transition-all duration-300 hover:bg-primary-dark hover:scale-105 shadow-md active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border border-primary font-semibold py-3 px-6 rounded-btn transition-all duration-300 hover:bg-secondary hover:scale-105 active:scale-95;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-soft rounded-card;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+}
+
+/* --- Utilities --- */
+@keyframes float {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
-}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.5); }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out;
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* Modern Spacing & Typography */
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--magenta-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.btn-glass {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
-  border: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
-}
-
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: var(--box-shadow-hover);
-  transform: translateY(-2px);
-}
-
-/* High Contrast Readability */
-.high-contrast-text {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* Modern Card Styles */
-.modern-card {
-  border-radius: var(--border-radius-glass);
-  transition: all 0.3s ease;
-}
-
-.modern-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--box-shadow-hover);
+.gradient-purple-magenta {
+  background: linear-gradient(135deg, var(--primary-violet) 0%, #EC4899 100%);
 }

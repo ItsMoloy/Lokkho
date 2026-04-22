@@ -1,55 +1,52 @@
 import Link from 'next/link';
-import { FaFacebook, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
-const Footer = () => {
-  const quickLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/academic', label: 'Academic Programs' },
-    { href: '/it-training', label: 'IT Training' },
-    { href: '/events', label: 'Events & Achievements' },
-    { href: '/teachers', label: 'Our Teachers' },
-    { href: '/contact', label: 'Contact Us' },
-  ];
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Institute Info */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 text-gradient">
-              Lokkho Academic and IT Institute
-            </h3>
-            <p className="text-gray-300 mb-4 leading-relaxed">
-              Where Knowledge Meets Technology. Premier education center in Demra, Dhaka 
-              offering comprehensive academic coaching and cutting-edge IT training programs.
+    <footer className="bg-white border-t border-gray-100 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+          {/* Brand Column */}
+          <div className="col-span-1 lg:col-span-1">
+            <Link href="/" className="text-3xl font-black text-primary tracking-tighter mb-6 block">
+              Lokkho
+            </Link>
+            <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              Premier academic coaching and IT training institute in Demra, Dhaka.
+              Empowering students through knowledge and technological innovation since 2020.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               <a
                 href="https://www.facebook.com/share/18WNfn1SnA/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 gradient-purple-magenta rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 animate-glow"
+                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all"
               >
-                <FaFacebook className="text-white" />
+                <FaFacebook size={18} />
+              </a>
+              <a href="https://wa.me/+8801853102104" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-500 hover:text-white transition-all">
+                <FaWhatsapp size={18} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4" style={{ color: 'var(--primary-purple)' }}>
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
+            <h3 className="text-gray-900 font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h3>
+            <ul className="space-y-4">
+              {[
+                { n: 'Our Programs', h: '/academic' },
+                { n: 'IT Training', h: '/it-training' },
+                { n: 'Our Teachers', h: '/teachers' },
+                { n: 'Events', h: '/events' },
+                { n: 'About Us', h: '/about' },
+              ].map((link) => (
+                <li key={link.n}>
+                  <Link href={link.h} className="text-gray-500 hover:text-primary text-sm transition-colors">
+                    {link.n}
                   </Link>
                 </li>
               ))}
@@ -58,35 +55,47 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4" style={{ color: 'var(--primary-purple)' }}>
-              Contact Info
-            </h4>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-purple-400" style={{ color: 'var(--magenta-accent)' }} />
-                <span className="text-gray-300">Demra, Dhaka</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <FaPhoneAlt className="text-purple-400" style={{ color: 'var(--magenta-accent)' }} />
-                <span className="text-gray-300">+880 XXXXXXXXXX</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <FaEnvelope className="text-purple-400" style={{ color: 'var(--magenta-accent)' }} />
-                <span className="text-gray-300">info@lokkho.edu.bd</span>
-              </div>
-            </div>
+            <h3 className="text-gray-900 font-bold mb-6 uppercase tracking-widest text-xs">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-sm text-gray-500">
+                <FaMapMarkerAlt className="mt-1 text-primary shrink-0" />
+                <a href="https://google.com/maps?q=Konapara,+Demra,+Dhaka,+1362&hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  Konapara, Demra, Dhaka - 1362,<br />Bangladesh
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-gray-500">
+                <FaPhoneAlt className="text-primary shrink-0" />
+                <a href="tel:+8801853102104" className="hover:text-primary">01853-102104</a>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-gray-500">
+                <FaEnvelope className="text-primary shrink-0" />
+                <a href="mailto:info@lokkho.academy" className="hover:text-primary">info@lokkho.academy</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter / CTA */}
+          <div>
+            <h3 className="text-gray-900 font-bold mb-6 uppercase tracking-widest text-xs">Admissions</h3>
+            <p className="text-gray-500 text-sm mb-4">Admissions open for Class 6-12 and all IT batches.</p>
+            <Link
+              href="/contact"
+              className="inline-block bg-primary text-white text-xs font-bold px-6 py-3 rounded-lg hover:bg-primary-dark transition-all"
+            >
+              Get Prospectus
+            </Link>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} Lokkho Academic and IT Institute. All rights reserved.
-          </p>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-gray-400">
+          <p>© {currentYear} Lokkho Academic & IT Institute. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link href="#" className="hover:text-primary">Privacy Policy</Link>
+            <Link href="#" className="hover:text-primary">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

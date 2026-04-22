@@ -1,411 +1,212 @@
-import Link from 'next/link';
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import FadeIn from '@/components/FadeIn';
 import FloatingJoinButton from '@/components/FloatingJoinButton';
-import { 
-  FaLaptopCode, 
-  FaRobot, 
-  FaPalette,
-  FaMobileAlt,
-  FaDatabase,
-  FaCloud,
-  FaShieldAlt,
-  FaChartLine,
-  FaCheckCircle,
-  FaAward,
-  FaUsers,
-  FaClock,
-  FaStar,
-  FaTrophy,
-  FaMicrosoft,
-  FaNetworkWired,
-  FaGraduationCap
-} from 'react-icons/fa';
+import { FaLaptopCode, FaRobot, FaPalette, FaRocket, FaAward, FaUsers, FaArrowRight, FaMicrosoft, FaGlobe } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function ITTraining() {
-  // Courses Data
-  const courses = [
-    {
-      category: "Web Development",
-      icon: <FaLaptopCode size={32} />,
-      color: "var(--primary-violet)",
-      courses: [
-        "HTML5 & CSS3 Fundamentals",
-        "JavaScript & ES6+",
-        "React.js & Next.js",
-        "Node.js & Express.js",
-        "MongoDB & Database Design",
-        "Responsive Web Design"
-      ]
-    },
-    {
-      category: "AI & Technology",
-      icon: <FaRobot size={32} />,
-      color: "var(--primary-violet)",
-      courses: [
-        "Python Programming",
-        "Machine Learning Basics",
-        "Data Science Fundamentals",
-        "Neural Networks & Deep Learning",
-        "AI Ethics & Applications",
-        "Computer Vision Basics"
-      ]
-    },
-    {
-      category: "Digital Skills",
-      icon: <FaPalette size={32} />,
-      color: "var(--primary-violet)",
-      courses: [
-        "Graphic Design with Canva",
-        "Video Editing Basics",
-        "Social Media Marketing",
-        "Content Creation",
-        "Digital Literacy",
-        "Office Productivity Tools"
-      ]
-    }
-  ];
+    const courses = [
+        { title: 'Web Development', icon: <FaLaptopCode />, desc: 'Master modern frontend & backend technologies to build professional websites.' },
+        { title: 'AI & Technology', icon: <FaRobot />, desc: 'Learn prompt engineering, AI tools, and the future of automation.' },
+        { title: 'Digital Skills', icon: <FaPalette />, desc: 'Graphics design, social media marketing, and office productivity tools.' },
+    ];
 
-  // Why Choose Us
-  const whyChooseUs = [
-    {
-      icon: <FaUsers size={32} />,
-      title: "Expert Instructors",
-      description: "Industry professionals with real-world experience"
-    },
-    {
-      icon: <FaLaptopCode size={32} />,
-      title: "Hands-on Training",
-      description: "Practical projects and real-world applications"
-    },
-    {
-      icon: <FaClock size={32} />,
-      title: "Flexible Schedule",
-      description: "Weekend and weekday batches available"
-    },
-    {
-      icon: <FaAward size={32} />,
-      title: "Certification",
-      description: "Industry-recognized certificates upon completion"
-    }
-  ];
+    return (
+        <div className="min-h-screen flex flex-col bg-primary-dark">
+            <Navbar />
 
-  // Benefits
-  const benefits = [
-    "Practical, project-based learning approach",
-    "Industry-relevant curriculum updated regularly",
-    "Small batch sizes for personalized attention",
-    "Lifetime access to course materials",
-    "Career guidance and job placement support",
-    "Affordable fees with easy payment options",
-    "Modern computer lab with high-speed internet",
-    "Guest lectures from industry experts"
-  ];
+            <main className="flex-grow pt-0">
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-violet-600 to-violet-800">
-          <div 
-            className="absolute inset-0"
-            style={{ 
-              background: 'linear-gradient(135deg, var(--primary-violet) 0%, #8B5CF6 100%)'
-            }}
-          />
-          <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div 
-              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-            >
-              <FaLaptopCode size={40} />
-            </div>
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              IT Training Programs
-            </h1>
-            <p className="text-xl md:text-2xl font-light opacity-95 max-w-3xl mx-auto">
-              Master cutting-edge technologies and launch your career in the digital world
-            </p>
-          </div>
-        </section>
+                {/* --- IT Training Hero Section --- */}
+                <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+                    {/* Background Gradient */}
+                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-accent-purple via-accent-cyan to-accent-pink" />
 
-        {/* Courses Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Our Courses"
-              subtitle="Comprehensive training programs designed for the modern tech industry"
-            />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {courses.map((courseCategory, index) => (
-                <div 
-                  key={index}
-                  className="p-8 rounded-xl hover:shadow-xl transition-all duration-300"
-                  style={{ 
-                    backgroundColor: 'var(--light-violet)',
-                    boxShadow: 'var(--box-shadow)'
-                  }}
-                >
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-                    style={{ backgroundColor: courseCategory.color }}
-                  >
-                    <div className="text-white">
-                      {courseCategory.icon}
+                    {/* Decorative mesh */}
+                    <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+                    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
+                        <FadeIn>
+                            <span className="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-8 inline-block border border-white/30">Tech-Focused Learning</span>
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: 'Playfair Display, serif' }}>
+                                Master the<br />Digital World
+                            </h1>
+                            <p className="text-xl md:text-2xl font-medium mb-10 text-white/90 max-w-3xl mx-auto">
+                                We don't just teach coding; we build innovators. Our IT curriculum is designed to bridge the gap between classroom knowledge and industry requirements.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                                <a href="#courses" className="btn-primary flex items-center gap-2 px-10 py-5 bg-accent text-charcoal hover:bg-white hover:text-primary border-none shadow-[0_20px_50px_rgba(249,115,22,0.3)]">
+                                    Browse Courses <FaArrowRight />
+                                </a>
+                                <a href="#contact" className="btn-secondary flex items-center gap-2 px-10 py-5 border-white text-white hover:bg-white hover:text-primary bg-transparent">
+                                    <FaArrowRight size={12} /> Learn More
+                                </a>
+                            </div>
+                        </FadeIn>
                     </div>
-                  </div>
-                  <h3 
-                    className="text-2xl font-bold mb-6 text-center"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    {courseCategory.category}
-                  </h3>
-                  <ul className="space-y-3">
-                    {courseCategory.courses.map((course, courseIndex) => (
-                      <li key={courseIndex} className="flex items-start gap-2">
-                        <FaCheckCircle 
-                          className="mt-1 flex-shrink-0"
-                          style={{ color: 'var(--gold-amber)' }}
-                        />
-                        <span className="text-gray-700 text-sm">{course}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact"
-                    className="w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
-                    style={{ backgroundColor: courseCategory.color }}
-                  >
-                    Enroll Now
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </section>
 
-        {/* Why Choose Us */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Why Choose Our IT Training"
-              subtitle="Experience the difference with our comprehensive approach"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {whyChooseUs.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300"
-                  style={{ boxShadow: 'var(--box-shadow)' }}
-                >
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    <div className="text-white">
-                      {feature.icon}
+                {/* --- AgentX Highlight --- */}
+                <section className="section-padding bg-secondary-dark">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <div className="bg-surface-dark p-8 md:p-16 rounded-[40px] shadow-2xl border-2 border-accent-purple/20 overflow-hidden relative group">
+                                {/* Glow Background */}
+                                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-purple/20 rounded-full blur-[100px] -mr-64 -mt-64 group-hover:bg-accent-purple/30 transition-all duration-1000" />
+
+                                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <span className="text-accent font-black text-xs uppercase tracking-[0.3em] mb-4 block">Major Achievement</span>
+                                        <h2 className="text-4xl md:text-6xl text-white font-black mb-6 leading-tight">AgentX AI Championship</h2>
+                                        <p className="text-white/60 text-lg mb-8 leading-relaxed">
+                                            Lokkho proudly organized the nationwide AgentX AI Championship, bringing together
+                                            students from top colleges and universities across Bangladesh.
+                                        </p>
+
+                                        <div className="flex flex-wrap gap-8 mb-10">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white"><FaMicrosoft /></div>
+                                                <div>
+                                                    <p className="text-[10px] text-white/40 uppercase font-black">Partner</p>
+                                                    <p className="text-white font-bold">Microsoft</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white"><FaGlobe /></div>
+                                                <div>
+                                                    <p className="text-[10px] text-white/40 uppercase font-black">Co-host</p>
+                                                    <p className="text-white font-bold">Netcom Learning</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-1 bg-gradient-to-r from-accent to-transparent rounded-lg">
+                                            <div className="bg-charcoal px-6 py-4 rounded-md">
+                                                <p className="text-accent font-bold flex items-center gap-2">
+                                                    <FaAward /> 500+ Participants Nationwide
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="aspect-[4/5] bg-secondary/50 rounded-2xl border-2 border-white/10 relative overflow-hidden flex items-center justify-center">
+                                        <div className="text-center text-white/20">
+                                            <FaRobot size={120} className="mx-auto mb-4 animate-float" />
+                                            <p className="font-bold uppercase tracking-widest text-xs">Event Poster Placeholder</p>
+                                        </div>
+                                        {/* Image if available */}
+                                        <Image src="/assets/Agentx.jpg" alt="AgentX" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    </div>
+                                </div>
+                            </div>
+                        </FadeIn>
                     </div>
-                  </div>
-                  <h4 
-                    className="text-lg font-semibold mb-3"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    {feature.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </section>
 
-        {/* AgentX AI Championship */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div 
-              className="p-8 md:p-12 rounded-xl text-white"
-              style={{ 
-                backgroundColor: 'var(--dark-charcoal)',
-                boxShadow: 'var(--box-shadow)'
-              }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: 'var(--gold-amber)' }}
-                    >
-                      <FaTrophy className="text-white text-2xl" />
+                {/* --- Courses --- */}
+                <section id="courses" className="section-padding bg-secondary">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <SectionHeading title="Our Core Courses" subtitle="Industry-led training modules for future-ready careers" />
+                        </FadeIn>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                            {courses.map((c, i) => (
+                                <FadeIn key={i} delay={i * 0.1}>
+                                    <div className="bg-white p-10 rounded-3xl group hover:shadow-2xl transition-all border-b-8 border-transparent hover:border-primary">
+                                        <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center text-primary text-3xl mb-8 group-hover:scale-110 transition-transform">
+                                            {c.icon}
+                                        </div>
+                                        <h4 className="text-2xl font-bold mb-4">{c.title}</h4>
+                                        <p className="text-gray-500 mb-8 leading-relaxed h-20">{c.desc}</p>
+                                        <button className="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest group-hover:gap-4 transition-all">
+                                            View Curriculum <FaArrowRight />
+                                        </button>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                    <h2 
-                      className="text-3xl md:text-4xl font-bold"
-                      style={{ fontFamily: 'Playfair Display, serif' }}
-                    >
-                      AgentX AI Championship
-                    </h2>
-                  </div>
-                  <p className="text-lg mb-6 opacity-90">
-                    We proudly organized the nationwide AgentX AI Championship, 
-                    a groundbreaking competition that brought together students from 
-                    colleges and universities across Bangladesh.
-                  </p>
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center gap-3">
-                      <FaMicrosoft className="text-2xl" style={{ color: 'var(--gold-amber)' }} />
-                      <span className="font-medium">Collaborated with Microsoft</span>
+                </section>
+
+                {/* --- Why Choose Us --- */}
+                <section className="section-padding bg-secondary-dark">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <SectionHeading title="Why IT Training at Lokkho?" subtitle="Beyond just theory; we focus on job-readiness" />
+                        </FadeIn>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+                            {[
+                                { icon: <FaRocket />, t: 'Project-based', d: 'Work on real-world projects' },
+                                { icon: <FaUsers />, t: 'Expert Mentorship', d: 'Learn from industry pros' },
+                                { icon: <FaAward />, t: 'Global Certificates', d: 'Microsoft backed recognition' },
+                                { icon: <FaLaptopCode />, t: 'Modern Lab', d: 'High-end PC configurations' }
+                            ].map((item, i) => (
+                                <FadeIn key={i} delay={i * 0.1}>
+                                    <div className="text-center">
+                                        <div className="text-primary text-4xl mb-4 flex justify-center">{item.icon}</div>
+                                        <h5 className="font-bold text-charcoal mb-2">{item.t}</h5>
+                                        <p className="text-gray-400 text-xs">{item.d}</p>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <FaNetworkWired className="text-2xl" style={{ color: 'var(--gold-amber)' }} />
-                      <span className="font-medium">Partnership with Netcom</span>
+                </section>
+
+                {/* --- Achievements Gallery --- */}
+                <section className="section-padding bg-primary-dark">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <div className="text-center mb-12">
+                                <h2 className="text-4xl md:text-5xl font-black text-text-primary mb-4" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '800' }}>
+                                    Our Achievements
+                                </h2>
+                                <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+                                    A showcase of our success stories and milestones in IT education and innovation
+                                </p>
+                            </div>
+                        </FadeIn>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[
+                                'achievement.jpg', 'achievement1.jpg', 'achievement2.jpg',
+                                'achievement3.jpg', 'achievement4.jpg', 'achievement5.jpg',
+                                'achievement6.jpg', 'achievement7.jpg', 'achievement8.jpg',
+                                'achievement9.jpg'
+                            ].map((img, index) => (
+                                <FadeIn key={index} delay={index * 0.05}>
+                                    <div className="group relative overflow-hidden rounded-2xl border border-border-dark hover:border-accent-purple/50 transition-all duration-300">
+                                        <div className="aspect-[4/3] relative">
+                                            <Image
+                                                src={`/assets/achievements/${img}`}
+                                                alt={`Achievement ${index + 1}`}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                unoptimized
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                            <div className="absolute bottom-4 left-4 right-4">
+                                                <p className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    Achievement {index + 1}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <FaGraduationCap className="text-2xl" style={{ color: 'var(--gold-amber)' }} />
-                      <span className="font-medium">Nationwide Participation</span>
-                    </div>
-                  </div>
-                  <Link
-                    href="/events"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg"
-                    style={{ 
-                      backgroundColor: 'var(--gold-amber)',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    Learn More About Event
-                  </Link>
-                </div>
-                <div className="text-center">
-                  <div 
-                    className="w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6"
-                    style={{ 
-                      backgroundColor: 'var(--gold-amber)',
-                      boxShadow: '0 0 40px rgba(245, 158, 11, 0.3)'
-                    }}
-                  >
-                    <FaRobot className="text-white text-4xl" />
-                  </div>
-                  <h3 
-                    className="text-2xl font-bold mb-4"
-                    style={{ fontFamily: 'Playfair Display, serif' }}
-                  >
-                    AI Excellence
-                  </h3>
-                  <p className="opacity-90">
-                    Showcasing our commitment to cutting-edge technology education 
-                    and innovation in artificial intelligence.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Program Benefits"
-              subtitle="Comprehensive advantages that accelerate your tech career"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <FaCheckCircle 
-                    className="mt-1 flex-shrink-0"
-                    style={{ color: 'var(--gold-amber)' }}
-                  />
-                  <span className="text-gray-700">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            </main>
 
-        {/* Learning Path */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Your Learning Path"
-              subtitle="A structured journey from beginner to professional"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
-                { step: "1", title: "Foundation", desc: "Learn the basics and build strong fundamentals" },
-                { step: "2", title: "Practice", desc: "Hands-on projects and real-world applications" },
-                { step: "3", title: "Advanced", desc: "Master complex concepts and technologies" },
-                { step: "4", title: "Career", desc: "Job placement and career guidance" }
-              ].map((path, index) => (
-                <div key={index} className="text-center">
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    {path.step}
-                  </div>
-                  <h4 
-                    className="text-lg font-semibold mb-2"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    {path.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    {path.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20">
-          <div 
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-            style={{ 
-              backgroundColor: 'var(--primary-violet)',
-              borderRadius: 'var(--border-radius-card)'
-            }}
-          >
-            <h2 
-              className="text-3xl md:text-4xl font-bold mb-6 text-white"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Ready to Start Your Tech Journey?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join our IT training programs and acquire the skills that employers are looking for. 
-              Your tech career starts here at Lokkho Institute.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-            >
-              Start Learning Today
-            </Link>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-      <FloatingJoinButton />
-    </div>
-  );
+            <Footer />
+            <FloatingJoinButton />
+        </div>
+    );
 }

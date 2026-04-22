@@ -1,435 +1,187 @@
-import Link from 'next/link';
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import FadeIn from '@/components/FadeIn';
 import FloatingJoinButton from '@/components/FloatingJoinButton';
-import { 
-  FaGraduationCap, 
-  FaBook, 
-  FaFlask,
-  FaCalculator,
-  FaGlobe,
-  FaAtom,
-  FaMicroscope,
-  FaChartLine,
-  FaCheckCircle,
-  FaAward,
-  FaUsers,
-  FaClock,
-  FaStar
-} from 'react-icons/fa';
+import { FaBook, FaFlask, FaCheckCircle, FaAward, FaChalkboardTeacher, FaClipboardCheck, FaLaptop } from 'react-icons/fa';
 
 export default function Academic() {
-  // Class 6-8 Subjects
-  const class6to8Subjects = [
-    { name: "Mathematics", icon: <FaCalculator /> },
-    { name: "Science", icon: <FaFlask /> },
-    { name: "English", icon: <FaGlobe /> },
-    { name: "Bangla", icon: <FaBook /> },
-    { name: "Social Science", icon: <FaGlobe /> },
-    { name: "Religious Studies", icon: <FaBook /> }
+  const classes6to8 = [
+    'Mathematics', 'General Science', 'English Grammar', 'Bangla Sahitya',
+    'Bangladesh & Global Studies', 'ICT Basics', 'Digital Literacy'
   ];
 
-  // Class 9-12 Science Subjects
-  const class9to12Subjects = [
-    { name: "Physics", icon: <FaAtom /> },
-    { name: "Chemistry", icon: <FaFlask /> },
-    { name: "Biology", icon: <FaMicroscope /> },
-    { name: "Mathematics", icon: <FaCalculator /> },
-    { name: "English", icon: <FaGlobe /> },
-    { name: "Bangla", icon: <FaBook /> }
+  const classes9to12 = [
+    'Physics (Science)', 'Chemistry (Science)', 'Biology (Science)',
+    'Higher Mathematics', 'English for Professionals', 'Project Work'
   ];
 
-  // Benefits
   const benefits = [
-    "Expert teachers with subject specialization",
-    "Comprehensive study materials and notes",
-    "Regular assessments and progress tracking",
-    "Individual attention and doubt clearing sessions",
-    "Weekly exam system for continuous evaluation",
-    "Parent-teacher meetings for holistic development",
-    "Modern teaching methods and visual aids",
-    "Affordable fee structure with flexible payment options"
-  ];
-
-  // Features
-  const features = [
-    {
-      icon: <FaUsers size={32} />,
-      title: "Small Batch Size",
-      description: "Maximum 15 students per batch for personalized attention"
-    },
-    {
-      icon: <FaClock size={32} />,
-      title: "Flexible Timing",
-      description: "Multiple batches available throughout the week"
-    },
-    {
-      icon: <FaAward size={32} />,
-      title: "Proven Results",
-      description: "Consistent excellent performance in board exams"
-    },
-    {
-      icon: <FaStar size={32} />,
-      title: "Quality Education",
-      description: "Focus on conceptual understanding, not just rote learning"
-    }
+    'Subject-specialized teachers for every topic',
+    'Comprehensive handwritten and digital notes',
+    'Small student bunches for personal care',
+    'Digital classroom facilities with projectors',
+    'Monthly progress feedback for parents',
+    'Foundation building for competitive exams'
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-primary-dark">
       <Navbar />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-violet-600 to-violet-800">
-          <div 
-            className="absolute inset-0"
-            style={{ 
-              background: 'linear-gradient(135deg, var(--primary-violet) 0%, #8B5CF6 100%)'
-            }}
-          />
-          <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div 
-              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-            >
-              <FaGraduationCap size={40} />
-            </div>
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Academic Programs
-            </h1>
-            <p className="text-xl md:text-2xl font-light opacity-95 max-w-3xl mx-auto">
-              Comprehensive academic coaching for Class 6-12 with expert guidance and proven results
-            </p>
-          </div>
-        </section>
 
-        {/* Programs Overview */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Class 6-8 Section */}
-              <div 
-                className="p-8 rounded-xl"
-                style={{ 
-                  backgroundColor: 'var(--light-violet)',
-                  boxShadow: 'var(--box-shadow)'
-                }}
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    <FaBook className="text-white text-xl" />
-                  </div>
-                  <h3 
-                    className="text-2xl font-bold"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    Class 6-8
-                  </h3>
-                </div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-700">General Subjects</h4>
-                <p className="text-gray-600 mb-6">
-                  Building strong foundations with comprehensive coverage of all major subjects. 
-                  Our program focuses on conceptual clarity and developing analytical thinking skills.
-                </p>
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {class6to8Subjects.map((subject, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-white p-3 rounded-lg">
-                      <div style={{ color: 'var(--primary-violet)' }}>
-                        {subject.icon}
-                      </div>
-                      <span className="text-sm font-medium">{subject.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  Enroll Now
-                </Link>
-              </div>
+      <main className="flex-grow pt-0">
 
-              {/* Class 9-12 Section */}
-              <div 
-                className="p-8 rounded-xl"
-                style={{ 
-                  backgroundColor: 'var(--light-violet)',
-                  boxShadow: 'var(--box-shadow)'
-                }}
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    <FaFlask className="text-white text-xl" />
-                  </div>
-                  <h3 
-                    className="text-2xl font-bold"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    Class 9-12
-                  </h3>
-                </div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-700">Science Group</h4>
-                <p className="text-gray-600 mb-6">
-                  Advanced preparation for board examinations with specialized focus on Science subjects. 
-                  Our rigorous curriculum ensures students are well-prepared for higher education.
-                </p>
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {class9to12Subjects.map((subject, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-white p-3 rounded-lg">
-                      <div style={{ color: 'var(--primary-violet)' }}>
-                        {subject.icon}
-                      </div>
-                      <span className="text-sm font-medium">{subject.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  Enroll Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* --- Academic Hero Section --- */}
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+          {/* Background Gradient */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary-light via-accent to-primary" />
 
-        {/* Teaching Approach */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Our Teaching Approach"
-              subtitle="Innovative methods that ensure effective learning and retention"
-            />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-xl" style={{ boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaBook className="text-white" />
-                </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Concept-Based Learning
-                </h4>
-                <p className="text-gray-600">
-                  Focus on understanding core concepts rather than memorization. 
-                  Our teaching methodology emphasizes practical applications and real-world examples.
-                </p>
-              </div>
+          {/* Decorative mesh */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
-              <div className="bg-white p-6 rounded-xl" style={{ boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaUsers className="text-white" />
-                </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Interactive Sessions
-                </h4>
-                <p className="text-gray-600">
-                  Encouraging student participation through discussions, Q&A sessions, 
-                  and collaborative learning activities that enhance engagement.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl" style={{ boxShadow: 'var(--box-shadow)' }}>
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'var(--primary-violet)' }}
-                >
-                  <FaChartLine className="text-white" />
-                </div>
-                <h4 
-                  className="text-xl font-semibold mb-3"
-                  style={{ 
-                    fontFamily: 'Playfair Display, serif',
-                    color: 'var(--dark-charcoal)'
-                  }}
-                >
-                  Continuous Assessment
-                </h4>
-                <p className="text-gray-600">
-                  Regular evaluations and feedback to track progress and identify 
-                  areas needing improvement, ensuring steady academic growth.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Why Choose Our Academic Programs"
-              subtitle="Comprehensive benefits that ensure academic excellence"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <FaCheckCircle 
-                    className="mt-1 flex-shrink-0"
-                    style={{ color: 'var(--gold-amber)' }}
-                  />
-                  <span className="text-gray-700">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Weekly Exam System */}
-        <section className="py-20">
-          <div 
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-            style={{ 
-              backgroundColor: 'var(--primary-violet)',
-              borderRadius: 'var(--border-radius-card)'
-            }}
-          >
-            <div className="text-center text-white">
-              <div 
-                className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-              >
-                <FaAward size={40} />
-              </div>
-              <h2 
-                className="text-3xl md:text-4xl font-bold mb-6"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                Weekly Exam System
-              </h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto opacity-95">
-                Our comprehensive weekly examination system ensures continuous learning and preparation. 
-                Every week, students undergo structured assessments that cover topics taught, 
-                helping them stay ahead and build confidence for final examinations.
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
+            <FadeIn>
+              <span className="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-8 inline-block border border-white/30">Academic Excellence</span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Academic<br />Programs
+              </h1>
+              <p className="text-xl md:text-2xl font-medium mb-10 text-white/90 max-w-3xl mx-auto">
+                Specialized coaching tailored for different grade levels with subject-specialized teachers and comprehensive learning materials.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <div className="text-2xl font-bold mb-2">Every Week</div>
-                  <div className="opacity-90">Regular assessments</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <div className="text-2xl font-bold mb-2">Detailed Feedback</div>
-                  <div className="opacity-90">Performance analysis</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <div className="text-2xl font-bold mb-2">Progress Tracking</div>
-                  <div className="opacity-90">Continuous improvement</div>
-                </div>
+
+              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#programs" className="btn-primary flex items-center gap-2 px-10 py-5 bg-accent text-charcoal hover:bg-white hover:text-primary border-none shadow-[0_20px_50px_rgba(249,115,22,0.3)]">
+                  Explore Programs <FaBook />
+                </a>
+                <a href="/contact" className="btn-secondary flex items-center gap-2 px-10 py-5 border-white text-white hover:bg-white hover:text-primary bg-transparent">
+                  <FaChalkboardTeacher size={14} /> Enroll Now
+                </a>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-              >
-                Learn More About Exam System
-              </Link>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* --- Programs Section --- */}
+        <section id="programs" className="section-padding bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+              {/* Junior Group */}
+              <FadeIn direction="left">
+                <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-l-[12px] border-primary h-full">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-14 h-14 bg-soft-violet rounded-xl flex items-center justify-center text-primary text-2xl">
+                      <FaBook />
+                    </div>
+                    <h3 className="text-3xl font-black text-charcoal">Class 6 – 8</h3>
+                  </div>
+                  <p className="text-gray-500 mb-8 font-medium">Focusing on solidifying foundations across all general subjects to prepare for high school.</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {classes6to8.map((s) => (
+                      <div key={s} className="flex items-center gap-3 p-3 bg-soft-violet/30 rounded-xl text-xs font-bold text-primary">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full" /> {s}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+
+              {/* Science Group ONLY */}
+              <FadeIn direction="right">
+                <div className="bg-charcoal p-8 md:p-12 rounded-3xl shadow-xl border-l-[12px] border-amber h-full text-white">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-14 h-14 bg-amber/20 rounded-xl flex items-center justify-center text-amber text-2xl">
+                      <FaFlask />
+                    </div>
+                    <h3 className="text-3xl font-black">Class 9 – 12</h3>
+                  </div>
+                  <div className="bg-amber text-charcoal px-4 py-1 rounded-full text-[10px] font-black uppercase mb-6 inline-block">Science Group Specialisation</div>
+                  <p className="text-white/60 mb-8 font-medium">Intensive preparation for board exams with deep focus on Science disciplines only.</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {classes9to12.map((s) => (
+                      <div key={s} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl text-xs font-bold text-amber">
+                        <div className="w-1.5 h-1.5 bg-amber rounded-full" /> {s}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section className="py-20 bg-white">
+        {/* --- Teaching Approach --- */}
+        <section className="section-padding bg-soft-violet">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Additional Features"
-              subtitle="More reasons to choose Lokkho for academic excellence"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="text-center p-6 rounded-xl hover:shadow-xl transition-all duration-300"
-                  style={{ 
-                    backgroundColor: 'var(--light-violet)',
-                    boxShadow: 'var(--box-shadow)'
-                  }}
-                >
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    <div className="text-white">
-                      {feature.icon}
+            <FadeIn>
+              <SectionHeading title="Our Teaching Approach" subtitle="Innovative methods to make learning effective and enjoyable" />
+            </FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              {[
+                { icon: <FaChalkboardTeacher />, t: 'Conceptual Teaching', d: 'We avoid rote learning and focus on making every concept crystal clear.' },
+                { icon: <FaLaptop />, t: 'Digital Integration', d: 'Using visual aids and digital content to explain complex scientific theories.' },
+                { icon: <FaAward />, t: 'Exam Motivation', d: 'Regular sessions to build confidence and overcome exam anxiety.' }
+              ].map((item, i) => (
+                <FadeIn key={i} delay={i * 0.1}>
+                  <div className="bg-white p-10 rounded-3xl text-center h-full hover:shadow-lg transition-all group">
+                    <div className="w-16 h-16 rounded-full bg-soft-violet flex items-center justify-center text-primary text-2xl mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                      {item.icon}
                     </div>
+                    <h4 className="text-xl font-bold mb-4">{item.t}</h4>
+                    <p className="text-gray-500 text-sm leading-relaxed">{item.d}</p>
                   </div>
-                  <h4 
-                    className="text-lg font-semibold mb-3"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    {feature.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    {feature.description}
-                  </p>
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 
-              className="text-3xl md:text-4xl font-bold mb-6"
-              style={{ 
-                fontFamily: 'Playfair Display, serif',
-                color: 'var(--dark-charcoal)'
-              }}
-            >
-              Ready to Excel Academically?
-            </h2>
-            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              Join our academic programs and experience the difference that quality education can make. 
-              Let us help you achieve your academic goals.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
-              style={{ backgroundColor: 'var(--primary-violet)' }}
-            >
-              Enroll Today
-            </Link>
+        {/* --- Weekly Exam highlight --- */}
+        <section className="section-padding bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn>
+              <div className="bg-primary p-12 md:p-16 rounded-[var(--radius-card)] flex flex-col md:flex-row items-center gap-12 text-white shadow-2xl overflow-hidden relative">
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/10 -mb-16 -mr-16 rounded-full" />
+                <div className="w-24 h-24 shrink-0 bg-white/20 rounded-3xl flex items-center justify-center text-5xl">
+                  <FaClipboardCheck />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black mb-4">The Weekly Exam System</h3>
+                  <p className="text-white/80 leading-relaxed text-lg mb-8">
+                    Our unique evaluation system ensures students stay active. Every Friday/Saturday,
+                    we conduct rigorous tests on the topics covered during the week. Results are
+                    shared instantly with parents via SMS/App.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <span className="bg-amber text-charcoal px-4 py-2 rounded-lg text-xs font-black uppercase">Instant Results</span>
+                    <span className="bg-white/20 px-4 py-2 rounded-lg text-xs font-black uppercase">Weekly Milestone</span>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </section>
+
+        {/* --- Benefits list --- */}
+        <section className="section-padding bg-soft-violet/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn>
+              <SectionHeading title="Benefits of Joining Lokkho" subtitle="Why hundreds of parents trust us with their child's future" />
+            </FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mt-12">
+              {benefits.map((b, i) => (
+                <FadeIn key={i} delay={i * 0.05}>
+                  <div className="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+                    <div className="text-primary"><FaCheckCircle size={20} /></div>
+                    <span className="font-bold text-gray-700 text-sm">{b}</span>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />

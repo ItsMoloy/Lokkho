@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lokkho Academic and IT Institute - Where Knowledge Meets Technology",
-  description: "Premier education center in Demra, Dhaka offering academic coaching (Class 6-12) and comprehensive IT training programs.",
+  title: "Lokkho Academic & IT Institute | Where Knowledge Meets Technology",
+  description: "Premier education center in Demra, Dhaka offering quality academic coaching for Class 6-12 and professional IT training.",
+  keywords: "Lokkho Institute, Academic Coaching Demra, IT Training Dhaka, Web Development Course Demra, Science Coaching Dhaka",
 };
 
 export default function RootLayout({
@@ -12,11 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

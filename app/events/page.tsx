@@ -1,386 +1,206 @@
-import Link from 'next/link';
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import FadeIn from '@/components/FadeIn';
 import FloatingJoinButton from '@/components/FloatingJoinButton';
-import { 
-  FaTrophy, 
-  FaCalendarAlt, 
-  FaUsers,
-  FaMicrosoft,
-  FaNetworkWired,
-  FaGraduationCap,
-  FaAward,
-  FaStar,
-  FaRocket,
-  FaMedal,
-  FaCertificate,
-  FaChalkboardTeacher,
-  FaLightbulb,
-  FaCode
-} from 'react-icons/fa';
+import { FaAward, FaCalendarAlt, FaMicrosoft, FaGlobe, FaChevronRight, FaStar, FaUserFriends } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Events() {
-  // Featured Event - AgentX AI Championship
-  const featuredEvent = {
-    title: "AgentX AI Championship",
-    description: "A groundbreaking nationwide competition that brought together the brightest minds from colleges and universities across Bangladesh to showcase their artificial intelligence and machine learning skills.",
-    collaborators: ["Microsoft", "Netcom"],
-    scope: "Nationwide — Colleges & Universities across Bangladesh",
-    highlights: [
-      "500+ Participants from 50+ Institutions",
-      "Workshops by Industry Experts",
-      "Real-world AI Problem Solving",
-      "Prizes Worth BDT 100,000+",
-      "Media Coverage and Recognition"
-    ],
-    outcomes: [
-      "Students gained hands-on AI experience",
-      "Industry connections established",
-      "Career opportunities for winners",
-      "Enhanced institute reputation"
-    ]
-  };
+    const events = [
+        { title: 'Annual Cultural Fest 2024', date: 'Upcoming', status: 'Planning', icon: <FaStar /> },
+        { title: 'Nationwide Coding Battle', date: 'Q4 2024', status: 'Upcoming', icon: <FaUserFriends /> },
+    ];
 
-  // Partnership Logos (placeholder data)
-  const partnerships = [
-    { name: "Microsoft", icon: <FaMicrosoft size={48} /> },
-    { name: "Netcom", icon: <FaNetworkWired size={48} /> },
-    { name: "Education Board", icon: <FaGraduationCap size={48} /> },
-    { name: "Tech Industry", icon: <FaRocket size={48} /> }
-  ];
+    return (
+        <div className="min-h-screen flex flex-col bg-primary-dark">
+            <Navbar />
 
-  // Future Events (placeholder)
-  const futureEvents = [
-    {
-      title: "National Coding Competition 2024",
-      date: "Coming Soon",
-      description: "Annual coding competition for school and college students",
-      icon: <FaCode />
-    },
-    {
-      title: "Tech Career Fair",
-      date: "Q4 2024",
-      description: "Connect students with leading tech companies",
-      icon: <FaUsers />
-    },
-    {
-      title: "AI Workshop Series",
-      date: "Monthly",
-      description: "Hands-on workshops on emerging AI technologies",
-      icon: <FaLightbulb />
-    },
-    {
-      title: "Student Project Showcase",
-      date: "Bi-annual",
-      description: "Display of innovative student projects",
-      icon: <FaRocket />
-    }
-  ];
+            <main className="flex-grow pt-0">
 
-  // Achievements
-  const achievements = [
-    {
-      icon: <FaTrophy size={32} />,
-      title: "Best Educational Institute 2023",
-      description: "Recognized for excellence in technology education"
-    },
-    {
-      icon: <FaMedal size={32} />,
-      title: "1000+ Students Milestone",
-      description: "Successfully served over 1000 students"
-    },
-    {
-      icon: <FaCertificate size={32} />,
-      title: "Microsoft Partnership",
-      description: "Official partner for AI education programs"
-    },
-    {
-      icon: <FaStar size={32} />,
-      title: "Innovation in Education",
-      description: "Awarded for innovative teaching methods"
-    }
-  ];
+                {/* --- Events Hero Section --- */}
+                <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+                    {/* Background Gradient */}
+                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-accent-pink via-accent-purple to-accent-cyan" />
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-violet-600 to-violet-800">
-          <div 
-            className="absolute inset-0"
-            style={{ 
-              background: 'linear-gradient(135deg, var(--primary-violet) 0%, #8B5CF6 100%)'
-            }}
-          />
-          <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div 
-              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-            >
-              <FaTrophy size={40} />
-            </div>
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Events & Achievements
-            </h1>
-            <p className="text-xl md:text-2xl font-light opacity-95 max-w-3xl mx-auto">
-              Celebrating our milestones and showcasing the events that define our excellence
-            </p>
-          </div>
-        </section>
+                    {/* Decorative mesh */}
+                    <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
-        {/* Featured Event - AgentX AI Championship */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Featured Event"
-              subtitle="AgentX AI Championship - Our Flagship Achievement"
-            />
-            <div 
-              className="p-8 md:p-12 rounded-xl"
-              style={{ 
-                backgroundColor: 'var(--dark-charcoal)',
-                boxShadow: 'var(--box-shadow)'
-              }}
-            >
-              <div className="text-white">
-                <div className="flex flex-col md:flex-row gap-8 mb-8">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div 
-                        className="w-16 h-16 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: 'var(--gold-amber)' }}
-                      >
-                        <FaTrophy className="text-white text-2xl" />
-                      </div>
-                      <h2 
-                        className="text-3xl md:text-4xl font-bold"
-                        style={{ fontFamily: 'Playfair Display, serif' }}
-                      >
-                        {featuredEvent.title}
-                      </h2>
+                    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
+                        <FadeIn>
+                            <span className="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-8 inline-block border border-white/30">Events & Achievements</span>
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: 'Playfair Display, serif' }}>
+                                Our Proudest<br />Moments
+                            </h1>
+                            <p className="text-xl md:text-2xl font-medium mb-10 text-white/90 max-w-3xl mx-auto">
+                                Achievements that define our institute's growth and impact in the educational landscape.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                                <a href="#achievements" className="btn-primary flex items-center gap-2 px-10 py-5 bg-accent text-charcoal hover:bg-white hover:text-primary border-none shadow-[0_20px_50px_rgba(249,115,22,0.3)]">
+                                    View Achievements <FaAward />
+                                </a>
+                                <a href="#upcoming" className="btn-secondary flex items-center gap-2 px-10 py-5 border-white text-white hover:bg-white hover:text-primary bg-transparent">
+                                    <FaCalendarAlt size={14} /> Upcoming Events
+                                </a>
+                            </div>
+                        </FadeIn>
                     </div>
-                    <p className="text-lg mb-6 opacity-90 leading-relaxed">
-                      {featuredEvent.description}
-                    </p>
-                  </div>
-                </div>
+                </section>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  <div>
-                    <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--gold-amber)' }}>
-                      Collaborations
-                    </h3>
-                    <div className="flex flex-wrap gap-4 mb-6">
-                      {featuredEvent.collaborators.map((collaborator, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          {collaborator === 'Microsoft' && <FaMicrosoft className="text-xl" style={{ color: 'var(--gold-amber)' }} />}
-                          {collaborator === 'Netcom' && <FaNetworkWired className="text-xl" style={{ color: 'var(--gold-amber)' }} />}
-                          <span className="font-medium">{collaborator}</span>
+                {/* --- Featured Achievement --- */}
+                <section id="achievements" className="section-padding bg-secondary-dark">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                        <div className="mt-12 bg-surface-dark rounded-[40px] shadow-2xl overflow-hidden border border-accent-pink/20 relative">
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                                <div className="p-8 md:p-16 flex flex-col justify-center">
+                                    <span className="text-amber font-black text-xs uppercase tracking-[0.3em] mb-4 block">Major Event</span>
+                                    <h2 className="text-4xl md:text-5xl text-white font-black mb-6 leading-tight">AgentX AI Championship</h2>
+                                    <p className="text-white/60 text-lg mb-8 leading-relaxed">
+                                        A nationwide platform created by Lokkho in collaboration with <b>Microsoft</b> and <b>Netcom</b>.
+                                        Targeted at colleges and universities across Bangladesh, it was the first AI prompting battle
+                                        of its kind in the country.
+                                    </p>
+
+                                    <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
+                                        <div>
+                                            <p className="text-amber font-bold text-xl">500+</p>
+                                            <p className="text-[10px] text-white/40 uppercase font-black">Participants</p>
+                                        </div>
+                                        <div className="w-px h-10 bg-white/10" />
+                                        <div>
+                                            <p className="text-white font-bold text-xl text-center">Nationwide</p>
+                                            <p className="text-[10px] text-white/40 uppercase font-black">Scope</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="relative aspect-[4/3] lg:aspect-auto">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-charcoal to-transparent z-10 lg:hidden" />
+                                    <Image
+                                        src="/assets/Agentx.jpg"
+                                        alt="AgentX Event"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </div>
                         </div>
-                      ))}
                     </div>
-                    <p className="text-sm opacity-75">
-                      {featuredEvent.scope}
-                    </p>
-                  </div>
+                </section>
 
-                  <div>
-                    <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--gold-amber)' }}>
-                      Event Highlights
-                    </h3>
-                    <ul className="space-y-2">
-                      {featuredEvent.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <FaStar className="mt-1 flex-shrink-0" style={{ color: 'var(--gold-amber)' }} />
-                          <span className="text-sm">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="border-t border-gray-700 pt-8">
-                  <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--gold-amber)' }}>
-                    Key Outcomes
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {featuredEvent.outcomes.map((outcome, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <FaAward className="mt-1 flex-shrink-0" style={{ color: 'var(--gold-amber)' }} />
-                        <span className="text-sm">{outcome}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Partnership Logos */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Our Partners"
-              subtitle="Collaborating with industry leaders for educational excellence"
-            />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {partnerships.map((partner, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-8 rounded-xl text-center hover:shadow-xl transition-all duration-300"
-                  style={{ boxShadow: 'var(--box-shadow)' }}
-                >
-                  <div style={{ color: 'var(--primary-violet)' }}>
-                    {partner.icon}
-                  </div>
-                  <h4 className="mt-4 font-semibold" style={{ color: 'var(--dark-charcoal)' }}>
-                    {partner.name}
-                  </h4>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Achievements */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Our Achievements"
-              subtitle="Recognition and milestones that mark our journey"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {achievements.map((achievement, index) => (
-                <div 
-                  key={index}
-                  className="p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300"
-                  style={{ 
-                    backgroundColor: 'var(--light-violet)',
-                    boxShadow: 'var(--box-shadow)'
-                  }}
-                >
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: 'var(--primary-violet)' }}
-                  >
-                    <div className="text-white">
-                      {achievement.icon}
+                {/* --- Partnership logos --- */}
+                <section className="section-padding bg-soft-violet/30">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <SectionHeading title="Our Valued Partners" subtitle="Collaborating with global giants for student success" />
+                        </FadeIn>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+                            {[
+                                { name: 'Microsoft', icon: <FaMicrosoft />, d: 'Cloud & AI Technology Partner' },
+                                { name: 'Netcom Learning', icon: <FaGlobe />, d: 'Co-organiser & Content Partner' },
+                                { name: 'ICT Division', icon: <FaAward />, d: 'Government Recognition' },
+                                { name: 'Local Schools', icon: <FaUserFriends size={20} />, d: 'Community Growth Partners' }
+                            ].map((p, i) => (
+                                <FadeIn key={i} delay={i * 0.1}>
+                                    <div className="bg-white p-8 rounded-3xl text-center shadow-sm hover:shadow-xl transition-all h-full flex flex-col items-center justify-center border border-gray-50">
+                                        <div className="w-16 h-16 rounded-full bg-soft-violet flex items-center justify-center text-primary text-3xl mb-4">
+                                            {p.icon}
+                                        </div>
+                                        <h4 className="font-bold text-charcoal mb-1">{p.name}</h4>
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest leading-tight">{p.d}</p>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                  </div>
-                  <h4 
-                    className="text-lg font-semibold mb-3"
-                    style={{ 
-                      fontFamily: 'Playfair Display, serif',
-                      color: 'var(--dark-charcoal)'
-                    }}
-                  >
-                    {achievement.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    {achievement.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </section>
 
-        {/* Future Events */}
-        <section className="py-20" style={{ backgroundColor: 'var(--light-violet)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading 
-              title="Upcoming Events"
-              subtitle="Exciting events and programs planned for the future"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {futureEvents.map((event, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-6 rounded-xl hover:shadow-xl transition-all duration-300"
-                  style={{ boxShadow: 'var(--box-shadow)' }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div 
-                      className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: 'var(--primary-violet)' }}
-                    >
-                      <FaCalendarAlt className="text-white" />
+                {/* --- Future Events --- */}
+                <section className="section-padding bg-secondary-dark">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <SectionHeading title="Future Events" subtitle="Exciting milestones coming your way" />
+                        </FadeIn>
+                        <div className="mt-12 space-y-4">
+                            {events.map((e, i) => (
+                                <FadeIn key={i} delay={i * 0.1}>
+                                    <div className="p-6 md:p-8 rounded-2xl bg-soft-violet/50 border border-primary/5 flex items-center justify-between group hover:bg-primary transition-all cursor-pointer">
+                                        <div className="flex items-center gap-6">
+                                            <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-primary group-hover:bg-amber group-hover:text-charcoal transition-all">
+                                                {e.icon}
+                                            </div>
+                                            <div>
+                                                <h4 className="text-xl font-bold text-charcoal group-hover:text-white transition-all">{e.title}</h4>
+                                                <div className="flex items-center gap-4 mt-1">
+                                                    <span className="text-xs font-black text-primary group-hover:text-amber uppercase flex items-center gap-1">
+                                                        <FaCalendarAlt size={10} /> {e.date}
+                                                    </span>
+                                                    <span className="text-[10px] bg-white/80 group-hover:bg-white/20 px-2 py-0.5 rounded text-charcoal group-hover:text-white font-bold uppercase tracking-widest">{e.status}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <FaChevronRight className="text-primary group-hover:text-white group-hover:translate-x-2 transition-all" />
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex-grow">
-                      <h4 
-                        className="text-xl font-semibold mb-2"
-                        style={{ 
-                          fontFamily: 'Playfair Display, serif',
-                          color: 'var(--dark-charcoal)'
-                        }}
-                      >
-                        {event.title}
-                      </h4>
-                      <div 
-                        className="text-sm font-medium mb-2"
-                        style={{ color: 'var(--primary-violet)' }}
-                      >
-                        {event.date}
-                      </div>
-                      <p className="text-gray-600 text-sm">
-                        {event.description}
-                      </p>
+                </section>
+
+                {/* --- Events Gallery --- */}
+                <section className="section-padding bg-primary-dark">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <FadeIn>
+                            <div className="text-center mb-12">
+                                <h2 className="text-4xl md:text-5xl font-black text-text-primary mb-4" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '800' }}>
+                                    Event Gallery
+                                </h2>
+                                <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+                                    Capturing memorable moments from our events, competitions, and celebrations
+                                </p>
+                            </div>
+                        </FadeIn>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {[
+                                'event4.jpg', 'event5.jpg', 'event6.jpg', 'event7.jpg',
+                                'event8.jpg', 'event9.jpg', 'event10.jpg', 'event11.jpg',
+                                'event12.jpg', 'event13.jpg', 'event14.jpg', 'event15.jpg',
+                                'event16.jpg', 'event17.jpg', 'event18.jpg', 'event19.jpg',
+                                'event20.jpg', 'event21.jpg'
+                            ].map((img, index) => (
+                                <FadeIn key={index} delay={index * 0.03}>
+                                    <div className="group relative overflow-hidden rounded-xl border border-border-dark hover:border-accent-pink/50 transition-all duration-300">
+                                        <div className="aspect-[4/3] relative">
+                                            <Image
+                                                src={`/assets/events/${img}`}
+                                                alt={`Event ${index + 1}`}
+                                                fill
+                                                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                                unoptimized
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                            <div className="absolute bottom-3 left-3 right-3">
+                                                <p className="text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    Event Moment {index + 1}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </section>
 
-        {/* Call to Action */}
-        <section className="py-20">
-          <div 
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-            style={{ 
-              backgroundColor: 'var(--primary-violet)',
-              borderRadius: 'var(--border-radius-card)'
-            }}
-          >
-            <h2 
-              className="text-3xl md:text-4xl font-bold mb-6 text-white"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Be Part of Our Next Success Story
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join us in creating more memorable events and achievements. 
-              Whether you're a student, parent, or partner, there's a place for you at Lokkho Institute.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-              >
-                <FaUsers />
-                Join Our Community
-              </Link>
-              <Link
-                href="/teachers"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-violet-600 transition-all duration-200"
-              >
-                <FaChalkboardTeacher />
-                Meet Our Team
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
+            </main>
 
-      <Footer />
-      <FloatingJoinButton />
-    </div>
-  );
+            <Footer />
+            <FloatingJoinButton />
+        </div>
+    );
 }
