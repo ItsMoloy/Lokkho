@@ -9,6 +9,7 @@
     --secondary-blue: #3B82F6;
     --accent-orange: #F97316;
     --accent-orange-light: #FB923C;
+
     --secondary-bg: #EFF6FF;
     --white: #FFFFFF;
     --dark-charcoal: #1F2937;
@@ -33,31 +34,31 @@
       width: 100%;
       max-width: 100vw;
     }
-    
+
     * {
       max-width: 100%;
       box-sizing: border-box;
     }
-    
+
     /* Fix for any potential overflow from large content */
     .min-h-screen, section, main {
       overflow-x: hidden;
       width: 100%;
       max-width: 100vw;
     }
-    
+
     /* Ensure images don't overflow */
     img {
       max-width: 100%;
       height: auto;
     }
-    
+
     /* Prevent text overflow on very small screens */
     h1, h2, h3, h4, h5, h6 {
       word-wrap: break-word;
       hyphens: auto;
     }
-    
+
     /* Fix for long text content */
     p, span, div {
       word-wrap: break-word;
@@ -95,23 +96,23 @@
   .bg-primary-dark {
     background-color: #0f172a;
   }
-  
+
   .bg-secondary-dark {
     background-color: #1e293b;
   }
-  
+
   .bg-soft-violet {
     background-color: #f8fafc;
   }
-  
+
   .text-primary {
     color: #1e40af;
   }
-  
+
   .text-charcoal {
     color: #374151;
   }
-  
+
   .text-accent {
     color: #f97316;
   }
