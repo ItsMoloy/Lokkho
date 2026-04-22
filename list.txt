@@ -1,0 +1,23 @@
+Permissions Size User           Date Modified Name
+drwxr-xr-x     - moloy-banerjee 22 Apr 10:21  .git
+drwxr-xr-x     - moloy-banerjee 22 Apr 10:12  .next
+drwxr-xr-x     - moloy-banerjee 22 Apr 05:19  .vscode
+drwxr-xr-x     - moloy-banerjee 22 Apr 11:16  app
+drwxr-xr-x     - moloy-banerjee 22 Apr 11:16  components
+drwxr-xr-x     - moloy-banerjee 22 Apr 06:12  node_modules
+drwxr-xr-x     - moloy-banerjee 21 Apr 22:19  public
+.rw-r--r--   491 moloy-banerjee 21 Apr 18:51  .gitignore
+.rw-r--r--   327 moloy-banerjee 21 Apr 15:27  AGENTS.md
+.rw-r--r--    11 moloy-banerjee 21 Apr 15:27  CLAUDE.md
+.rw-r--r--   544 moloy-banerjee 21 Apr 17:57  design.md
+.rw-r--r--   465 moloy-banerjee 21 Apr 15:26  eslint.config.mjs
+.rw-r--r--  1.8M moloy-banerjee 22 Apr 11:01  files.txt
+.rw-r--r--     0 moloy-banerjee 22 Apr 11:20  list.txt
+.rw-r--r--   251 moloy-banerjee 22 Apr 10:35  next-env.d.ts
+.rw-r--r--   496 moloy-banerjee 22 Apr 05:29  next.config.ts
+.rw-r--r--  232k moloy-banerjee 22 Apr 06:12  package-lock.json
+.rw-r--r--   600 moloy-banerjee 22 Apr 06:12  package.json
+.rw-r--r--    94 moloy-banerjee 22 Apr 06:12  postcss.config.js
+.rw-r--r--   105 moloy-banerjee 22 Apr 06:12  postcss.config.mjs
+.rw-r--r--  1.4k moloy-banerjee 21 Apr 15:26  README.md
+.rw-r--r--   666 moloy-banerjee 21 Apr 15:26  tsconfig.json

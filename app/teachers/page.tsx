@@ -149,15 +149,15 @@ export default function Teachers() {
         </section>
 
         {/* --- Teacher Grid --- */}
-        <section id="teachers" className="section-padding bg-secondary-dark">
+        <section id="teachers" className="section-padding bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {teachersData.map((t, i) => (
                 <FadeIn key={i} delay={i * 0.05}>
-                  <div className="bg-surface-dark rounded-3xl overflow-hidden shadow-xl border border-border-dark group hover:-translate-y-2 transition-all duration-300">
-                    <div className="h-64 bg-surface-light flex items-center justify-center relative overflow-hidden">
-                      <FaChalkboardTeacher size={80} className="text-accent-purple/30 group-hover:scale-110 transition-transform duration-500" />
-                      <div className="absolute top-4 right-4 bg-gradient-to-r from-accent-purple to-accent-cyan text-white p-2 rounded-xl text-xs font-black shadow-lg">
+                  <div className="bg-slate-800/50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-slate-600/30 group hover:-translate-y-2 transition-all duration-300">
+                    <div className="h-64 bg-slate-700/50 flex items-center justify-center relative overflow-hidden">
+                      <FaChalkboardTeacher size={80} className="text-blue-400/30 group-hover:scale-110 transition-transform duration-500" />
+                      <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-500 to-orange-500 text-white p-2 rounded-xl text-xs font-black shadow-lg">
                         {t.experience}
                       </div>
                       {/* Teacher Profile Image if available */}
@@ -172,27 +172,27 @@ export default function Teachers() {
                     <div className="p-6">
                       {/* Class Badge */}
                       <div className="mb-4">
-                        <span className="inline-block bg-gradient-to-r from-accent-purple/20 to-accent-cyan/20 text-accent-purple px-3 py-1 rounded-full text-xs font-bold border border-accent-purple/30">
+                        <span className="inline-block bg-gradient-to-r from-blue-500/20 to-orange-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold border border-blue-400/30">
                           {t.classes}
                         </span>
                       </div>
-                      
+
                       {/* Teacher Name */}
-                      <h3 className="text-xl font-bold text-text-primary mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '700' }}>
+                      <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: '700' }}>
                         {t.name}
                       </h3>
-                      
+
                       {/* Role */}
-                      <p className="text-xs font-semibold text-accent-cyan mb-3 uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <p className="text-xs font-semibold text-orange-400 mb-3 uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
                         {t.role}
                       </p>
-                      
+
                       {/* Subjects */}
                       <div className="mb-4">
-                        <p className="text-xs font-medium text-text-muted mb-2">Subjects:</p>
+                        <p className="text-xs font-medium text-gray-400 mb-2">Subjects:</p>
                         <div className="flex flex-wrap gap-1">
                           {t.subjects.map((subject, idx) => (
-                            <span key={idx} className="bg-surface-light/50 text-text-secondary px-2 py-1 rounded text-xs font-medium">
+                            <span key={idx} className="bg-slate-600/50 text-gray-300 px-2 py-1 rounded text-xs font-medium">
                               {subject}
                             </span>
                           ))}
@@ -200,15 +200,15 @@ export default function Teachers() {
                       </div>
 
                       {/* Education & Experience */}
-                      <div className="pt-4 border-t border-border-dark flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-accent-purple to-accent-cyan flex items-center justify-center text-white shrink-0">
+                      <div className="pt-4 border-t border-slate-600/30 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-orange-500 flex items-center justify-center text-white shrink-0">
                           <FaHistory size={12} />
                         </div>
                         <div className="text-xs leading-tight">
-                          <p className="font-semibold text-text-primary" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          <p className="font-semibold text-white" style={{ fontFamily: 'Inter, sans-serif' }}>
                             {t.education}
                           </p>
-                          <p className="text-text-muted">{t.experience} Experience</p>
+                          <p className="text-gray-400">{t.experience} Experience</p>
                         </div>
                       </div>
                     </div>

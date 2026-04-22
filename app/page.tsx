@@ -76,14 +76,14 @@ export default function Home() {
                 </section>
 
                 {/* --- Learning System Section --- */}
-                <section className="section-padding bg-soft-violet">
+                <section className="section-padding bg-slate-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn>
                             <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                     Our Learning System
                                 </h2>
-                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                                     A comprehensive 5-step approach to ensure academic excellence and practical skill development
                                 </p>
                             </div>
@@ -91,20 +91,21 @@ export default function Home() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-12 relative">
                             {/* Connector line for desktop */}
-                            <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-primary/20 z-0" />
+                            <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-blue-600/30 z-0" />
 
                             {learningSteps.map((step, i) => (
                                 <FadeIn key={step.num} delay={i * 0.1}>
-                                    <div className="relative z-10 glass-card p-6 border-t-4 border-primary group hover:bg-soft-violet transition-colors">
-                                        <div className="w-12 h-12 rounded-xl gradient-purple-magenta flex items-center justify-center text-white mb-6 bg-primary shadow-lg group-hover:scale-110 transition-transform">
+                                    <div className="relative z-10 bg-slate-700/50 backdrop-blur-sm border border-slate-600/30 p-6 rounded-xl group hover:bg-slate-700 transition-all">
+                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-orange-500 flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform">
                                             {step.icon}
                                         </div>
-                                        <div className="text-xs font-black text-primary mb-2">STEP 0{step.num}</div>
-                                        <h3 className="text-lg font-bold mb-3 text-charcoal">{step.title}</h3>
+                                        <div className="text-xs font-bold text-blue-400 mb-2">STEP 0{step.num}</div>
+                                        <h3 className="text-lg font-bold mb-3 text-white">{step.title}</h3>
                                         <ul className="space-y-2">
                                             {step.points.map((p, idx) => (
-                                                <li key={idx} className="text-xs text-gray-500 flex items-center gap-2">
-                                                    <div className="w-1 h-1 rounded-full bg-primary" /> {p}
+                                                <li key={idx} className="text-xs text-gray-300 flex items-start gap-2">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0" /> 
+                                                    <span>{p}</span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -116,14 +117,14 @@ export default function Home() {
                 </section>
 
                 {/* --- Impact Stats --- */}
-                <section className="py-16 bg-soft-violet border-y border-primary/5">
+                <section className="py-16 bg-slate-900 border-y border-slate-700">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn>
                             <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                     Our Impact
                                 </h2>
-                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                                     Numbers that reflect our commitment to education excellence
                                 </p>
                             </div>
@@ -138,14 +139,14 @@ export default function Home() {
                 </section>
 
                 {/* --- Differentiators --- */}
-                <section className="section-padding bg-secondary-dark">
+                <section className="section-padding bg-slate-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn>
                             <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                     What Makes Us Different
                                 </h2>
-                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                                     Discover the unique advantages that set us apart
                                 </p>
                             </div>
@@ -153,12 +154,12 @@ export default function Home() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
                             {features.map((f, i) => (
                                 <FadeIn key={i} delay={i * 0.1}>
-                                    <div className="text-center p-8 rounded-[var(--radius-card)] bg-soft-violet/50 border border-primary/5 hover:bg-white hover:shadow-xl transition-all h-full">
-                                        <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 text-primary shadow-sm text-2xl">
+                                    <div className="text-center p-8 rounded-xl bg-slate-700/50 border border-slate-600/30 hover:bg-slate-700 hover:shadow-xl transition-all h-full">
+                                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-orange-500 flex items-center justify-center mx-auto mb-6 text-white shadow-lg text-2xl">
                                             {f.icon}
                                         </div>
-                                        <h4 className="text-xl font-bold mb-3 text-charcoal">{f.title}</h4>
-                                        <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                                        <h4 className="text-xl font-bold mb-3 text-white">{f.title}</h4>
+                                        <p className="text-gray-300 text-sm leading-relaxed">{f.desc}</p>
                                     </div>
                                 </FadeIn>
                             ))}
@@ -167,44 +168,44 @@ export default function Home() {
                 </section>
 
                 {/* --- Services Split --- */}
-                <section className="section-padding bg-soft-violet">
+                <section className="section-padding bg-slate-900">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn>
                             <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                     Our Services
                                 </h2>
-                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                                     Comprehensive educational solutions for academic and technological excellence
                                 </p>
                             </div>
                         </FadeIn>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <FadeIn direction="left">
-                                <div className="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-primary h-full">
-                                    <div className="w-16 h-16 rounded-2xl bg-soft-violet flex items-center justify-center text-primary text-3xl mb-8">
+                                <div className="bg-slate-800 p-10 rounded-3xl shadow-xl border-t-4 border-blue-500 h-full">
+                                    <div className="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 text-3xl mb-8">
                                         <FaGraduationCap />
                                     </div>
-                                    <h3 className="text-3xl font-bold mb-4">Academic Coaching</h3>
-                                    <p className="text-gray-600 mb-8 leading-relaxed">
+                                    <h3 className="text-3xl font-bold mb-4 text-white">Academic Coaching</h3>
+                                    <p className="text-gray-300 mb-8 leading-relaxed">
                                         Comprehensive academic support for Class 6–12. Our structured approach covers all board subjects with a specialty in the Science Group for senior students.
                                     </p>
-                                    <Link href="/academic" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                                    <Link href="/academic" className="text-blue-400 font-bold flex items-center gap-2 hover:gap-4 transition-all">
                                         Explore Academic Programs <FaArrowRight />
                                     </Link>
                                 </div>
                             </FadeIn>
 
                             <FadeIn direction="right">
-                                <div className="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-amber h-full">
-                                    <div className="w-16 h-16 rounded-2xl bg-amber/10 flex items-center justify-center text-amber text-3xl mb-8">
+                                <div className="bg-slate-800 p-10 rounded-3xl shadow-xl border-t-4 border-orange-500 h-full">
+                                    <div className="w-16 h-16 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-400 text-3xl mb-8">
                                         <FaLaptopCode />
                                     </div>
-                                    <h3 className="text-3xl font-bold mb-4">IT Training</h3>
-                                    <p className="text-gray-600 mb-8 leading-relaxed">
+                                    <h3 className="text-3xl font-bold mb-4 text-white">IT Training</h3>
+                                    <p className="text-gray-300 mb-8 leading-relaxed">
                                         Master next-gen technology with our industry-led courses. From Web Development to AI Prompting, we prepare students for the digital future.
                                     </p>
-                                    <Link href="/it-training" className="text-amber font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                                    <Link href="/it-training" className="text-orange-400 font-bold flex items-center gap-2 hover:gap-4 transition-all">
                                         Explore IT Courses <FaArrowRight />
                                     </Link>
                                 </div>
@@ -214,14 +215,14 @@ export default function Home() {
                 </section>
 
                 {/* --- Gallery Grid Placeholders --- */}
-                <section className="section-padding bg-secondary-dark">
+                <section className="section-padding bg-slate-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <FadeIn>
                             <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                     Our Journey in Pictures
                                 </h2>
-                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                                     Glimpses of our educational excellence and student achievements
                                 </p>
                             </div>
@@ -229,13 +230,13 @@ export default function Home() {
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
                             {galleryPlaceholders.map((item, i) => (
                                 <FadeIn key={i} delay={i * 0.05}>
-                                    <div className="aspect-video bg-soft-violet rounded-2xl flex flex-col items-center justify-center border border-primary/10 group overflow-hidden relative">
-                                        <div className="text-primary/30 text-4xl mb-2 group-hover:scale-125 transition-transform duration-500">
+                                    <div className="aspect-video bg-slate-700/50 rounded-xl flex flex-col items-center justify-center border border-slate-600/30 group overflow-hidden relative hover:bg-slate-700 transition-all">
+                                        <div className="text-gray-400 text-4xl mb-2 group-hover:scale-110 transition-transform duration-500">
                                             {item.icon}
                                         </div>
-                                        <span className="text-xs font-bold text-primary/60 uppercase tracking-widest">{item.label}</span>
+                                        <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{item.label}</span>
                                         {/* Placeholder image layer (simulated) */}
-                                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </div>
                                 </FadeIn>
                             ))}

@@ -31,9 +31,9 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <img 
-              src="profile.jpg" 
-              alt="Lokkho Academic and IT Institute" 
+            <img
+              src="profile.jpg"
+              alt="Lokkho Academic and IT Institute"
               className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
@@ -45,8 +45,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-semibold transition-colors duration-200 hover:text-blue-600 ${pathname === link.href
-                    ? 'text-blue-600'
-                    : 'text-gray-600'
+                  ? 'text-blue-600'
+                  : 'text-gray-600'
                   }`}
               >
                 {link.name}
@@ -90,8 +90,8 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={`block px-3 py-4 text-base font-bold rounded-lg ${pathname === link.href
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-blue-50 text-blue-600'
+                    : 'text-gray-600 hover:bg-gray-50'
                     }`}
                 >
                   {link.name}

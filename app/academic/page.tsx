@@ -64,23 +64,23 @@ export default function Academic() {
         </section>
 
         {/* --- Programs Section --- */}
-        <section id="programs" className="section-padding bg-white">
+        <section id="programs" className="section-padding bg-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               {/* Junior Group */}
               <FadeIn direction="left">
-                <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-l-[12px] border-primary h-full">
+                <div className="bg-slate-700/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl border-l-4 border-blue-500 h-full">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 bg-soft-violet rounded-xl flex items-center justify-center text-primary text-2xl">
+                    <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-2xl">
                       <FaBook />
                     </div>
-                    <h3 className="text-3xl font-black text-charcoal">Class 6 – 8</h3>
+                    <h3 className="text-3xl font-black text-white">Class 6 – 8</h3>
                   </div>
-                  <p className="text-gray-500 mb-8 font-medium">Focusing on solidifying foundations across all general subjects to prepare for high school.</p>
+                  <p className="text-gray-300 mb-8 font-medium">Focusing on solidifying foundations across all general subjects to prepare for high school.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {classes6to8.map((s) => (
-                      <div key={s} className="flex items-center gap-3 p-3 bg-soft-violet/30 rounded-xl text-xs font-bold text-primary">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full" /> {s}
+                      <div key={s} className="flex items-center gap-3 p-3 bg-slate-600/50 rounded-xl text-xs font-bold text-blue-300">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" /> {s}
                       </div>
                     ))}
                   </div>
@@ -89,14 +89,14 @@ export default function Academic() {
 
               {/* Science Group ONLY */}
               <FadeIn direction="right">
-                <div className="bg-charcoal p-8 md:p-12 rounded-3xl shadow-xl border-l-[12px] border-amber h-full text-white">
+                <div className="bg-slate-700/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl border-l-4 border-orange-500 h-full text-white">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 bg-amber/20 rounded-xl flex items-center justify-center text-amber text-2xl">
+                    <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 text-2xl">
                       <FaFlask />
                     </div>
-                    <h3 className="text-3xl font-black">Class 9 – 12</h3>
+                    <h3 className="text-3xl font-black text-white">Class 9 – 12</h3>
                   </div>
-                  <div className="bg-amber text-charcoal px-4 py-1 rounded-full text-[10px] font-black uppercase mb-6 inline-block">Science Group Specialisation</div>
+                  <div className="bg-orange-500 text-slate-900 px-4 py-1 rounded-full text-[10px] font-black uppercase mb-6 inline-block">Science Group Specialisation</div>
                   <p className="text-white/60 mb-8 font-medium">Intensive preparation for board exams with deep focus on Science disciplines only.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {classes9to12.map((s) => (
@@ -112,10 +112,17 @@ export default function Academic() {
         </section>
 
         {/* --- Teaching Approach --- */}
-        <section className="section-padding bg-soft-violet">
+        <section className="section-padding bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn>
-              <SectionHeading title="Our Teaching Approach" subtitle="Innovative methods to make learning effective and enjoyable" />
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Our Teaching Approach
+                </h2>
+                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                  Innovative methods to make learning effective and enjoyable
+                </p>
+              </div>
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               {[
@@ -124,12 +131,12 @@ export default function Academic() {
                 { icon: <FaAward />, t: 'Exam Motivation', d: 'Regular sessions to build confidence and overcome exam anxiety.' }
               ].map((item, i) => (
                 <FadeIn key={i} delay={i * 0.1}>
-                  <div className="bg-white p-10 rounded-3xl text-center h-full hover:shadow-lg transition-all group">
-                    <div className="w-16 h-16 rounded-full bg-soft-violet flex items-center justify-center text-primary text-2xl mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="bg-slate-800/50 backdrop-blur-sm p-10 rounded-3xl text-center h-full hover:shadow-lg transition-all group border border-slate-600/30">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-orange-500 flex items-center justify-center text-white text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
-                    <h4 className="text-xl font-bold mb-4">{item.t}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.d}</p>
+                    <h4 className="text-xl font-bold mb-4 text-white">{item.t}</h4>
+                    <p className="text-gray-300 text-sm leading-relaxed">{item.d}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -138,10 +145,10 @@ export default function Academic() {
         </section>
 
         {/* --- Weekly Exam highlight --- */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-slate-800">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn>
-              <div className="bg-primary p-12 md:p-16 rounded-[var(--radius-card)] flex flex-col md:flex-row items-center gap-12 text-white shadow-2xl overflow-hidden relative">
+              <div className="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-center gap-12 text-white shadow-2xl overflow-hidden relative">
                 <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/10 -mb-16 -mr-16 rounded-full" />
                 <div className="w-24 h-24 shrink-0 bg-white/20 rounded-3xl flex items-center justify-center text-5xl">
                   <FaClipboardCheck />

@@ -171,7 +171,7 @@ export default function ITTraining() {
                                 </p>
                             </div>
                         </FadeIn>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {[
                                 'achievement.jpg', 'achievement1.jpg', 'achievement2.jpg',
